@@ -1,6 +1,6 @@
 import React, {useState} from "react";
-import {Geoposition, Geolocation} from "@ionic-native/geolocation";
-import {IonBadge, IonButton, IonChip, IonLoading, IonSpinner, IonToast} from "@ionic/react";
+import {Geolocation, Geoposition} from "@ionic-native/geolocation";
+import {IonButton, IonChip, IonLoading, IonToast} from "@ionic/react";
 
 interface LocationError {
     showError: boolean;
@@ -80,9 +80,9 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                 message={successMessage || 'Juhuuu, geschafft!'}
                 duration={2000}
             />
-            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center'}}>
+            <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '24px'}}>
                 <IonButton color="primary" onClick={getLocation}>{'Bin ich schon da?'}</IonButton>
-                {result ? <IonChip color={'secondary'}>{result}</IonChip> : null}
+                {result ? <IonChip onClick={() => setResult(undefined)} color={'secondary'}>{result}</IonChip> : null}
             </div>
         </>
     );

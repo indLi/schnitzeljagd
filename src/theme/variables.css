@@ -72,6 +72,23 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  --ion-color-fee: #2c9f6e;
+  --ion-color-fee-rgb: 44,159,110;
+  --ion-color-fee-contrast: #ffffff;
+  --ion-color-fee-contrast-rgb: 255,255,255;
+  --ion-color-fee-shade: #278c61;
+  --ion-color-fee-tint: #41a97d;
+
+}
+
+.ion-color-fee {
+  --ion-color-base: var(--ion-color-fee);
+  --ion-color-base-rgb: var(--ion-color-fee-rgb);
+  --ion-color-contrast: var(--ion-color-fee-contrast);
+  --ion-color-contrast-rgb: var(--ion-color-fee-contrast-rgb);
+  --ion-color-shade: var(--ion-color-fee-shade);
+  --ion-color-tint: var(--ion-color-fee-tint);
 }
 
 @media (prefers-color-scheme: dark) {
