@@ -1,60 +1,47 @@
-import MessageListItem from '../components/MessageListItem';
-import React, { useState } from 'react';
-import { Message, getMessages } from '../data/messages';
-import {
-  IonContent,
-  IonHeader,
-  IonList,
-  IonPage,
-  IonRefresher,
-  IonRefresherContent,
-  IonTitle,
-  IonToolbar,
-  useIonViewWillEnter
-} from '@ionic/react';
+import React, {useEffect, useState} from 'react';
+import {IonPage} from '@ionic/react';
 import './Home.css';
+import {Welcome} from "./steps/Welcome";
+import {ViewFlintsbach} from "./steps/ViewFlintsbach";
+
+enum Step {
+    Welcome,
+    ViewFlintsbach,
+}
 
 const Home: React.FC = () => {
 
-  const [messages, setMessages] = useState<Message[]>([]);
+    const [step, setStep] = useState<Step | undefined>();
 
-  useIonViewWillEnter(() => {
-    const msgs = getMessages();
-    setMessages(msgs);
-  });
+    useEffect(() => {
+        console.log('use effect')
+        setStep(Step.Welcome)
+    }, [])
 
-  const refresh = (e: CustomEvent) => {
-    setTimeout(() => {
-      e.detail.complete();
-    }, 3000);
-  };
+    const goToNextStep = () => {
+        const newStep = step !== undefined ? step + 1 : undefined;
+        setStep(newStep)
+    }
 
-  return (
-    <IonPage id="home-page">
-      <IonHeader>
-        <IonToolbar>
-          <IonTitle>Inbox</IonTitle>
-        </IonToolbar>
-      </IonHeader>
-      <IonContent fullscreen>
-        <IonRefresher slot="fixed" onIonRefresh={refresh}>
-          <IonRefresherContent></IonRefresherContent>
-        </IonRefresher>
+    const getCurrentStep = () => {
+        switch (step) {
+            case Step.Welcome:
+                return <Welcome goToNextStep={goToNextStep}/>
+            case Step.ViewFlintsbach:
+                return <ViewFlintsbach goToNextStep={goToNextStep}/>
+            default:
+                return <div>Loading</div>
+        }
 
-        <IonHeader collapse="condense">
-          <IonToolbar>
-            <IonTitle size="large">
-              Inbox
-            </IonTitle>
-          </IonToolbar>
-        </IonHeader>
+    }
 
-        <IonList>
-          {messages.map(m => <MessageListItem key={m.id} message={m} />)}
-        </IonList>
-      </IonContent>
-    </IonPage>
-  );
+    return (
+        <>
+            {
+                getCurrentStep()
+            }
+        </>
+    );
 };
 
 export default Home;
