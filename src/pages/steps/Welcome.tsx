@@ -1,16 +1,21 @@
 import React from "react";
-import {IonButton, IonContent, IonPage} from "@ionic/react";
+import {IonButton, IonText} from "@ionic/react";
 import {StepProps} from "./commonSteps";
-import {CheckPosition} from "../../components/CheckPosition";
 
 export const Welcome: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonPage>
-            <IonContent fullscreen style={{'--background': '#fffaf7'}}>
-                welcome screen
-                <IonButton onClick={goToNextStep}>Es kann los gehen</IonButton>
-            </IonContent>
-        </IonPage>
+        <>
+            <div style={{display: 'flex', flexDirection: 'column', padding: '32px'}}>
+                <IonText color={'dark'}>
+                    <h1>Hallo Evi</h1>
+                    <p>hast du sie auch gesehen usw</p>
+                    <p>lalal und blub und so</p>
+                    <br/>
+                    <p>Bist du bereit?</p>
+                </IonText>
+                <IonButton style={{alignSelf: 'center'}} onClick={goToNextStep}>Es kann los gehen</IonButton>
+            </div>
+        </>
     );
 };

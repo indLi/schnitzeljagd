@@ -1,8 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {IonPage} from '@ionic/react';
+import {IonContent, IonPage, IonSpinner} from '@ionic/react';
 import './Home.css';
 import {Welcome} from "./steps/Welcome";
 import {ViewFlintsbach} from "./steps/ViewFlintsbach";
+import {Loading} from "./steps/Loading";
 
 enum Step {
     Welcome,
@@ -30,17 +31,17 @@ const Home: React.FC = () => {
             case Step.ViewFlintsbach:
                 return <ViewFlintsbach goToNextStep={goToNextStep}/>
             default:
-                return <div>Loading</div>
+                return <Loading/>
         }
 
     }
 
     return (
-        <>
-            {
-                getCurrentStep()
-            }
-        </>
+        <IonPage>
+            <IonContent fullscreen style={{'--background': '#fffaf7'}}>
+                {getCurrentStep()}
+            </IonContent>
+        </IonPage>
     );
 };
 
