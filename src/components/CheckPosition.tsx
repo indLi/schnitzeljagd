@@ -45,6 +45,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
             setError({showError: false});
             const checkedPosition = checkPosition(position);
             if (checkedPosition.didArrive) {
+                setResult(undefined)
                 setShowSuccess(true)
             } else {
                 setResult(getDistanceMessage(checkedPosition.distance));
