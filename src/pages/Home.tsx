@@ -1,26 +1,38 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonPage, IonSpinner} from '@ionic/react';
+import {IonContent, IonPage} from '@ionic/react';
 import './Home.css';
 import {Welcome} from "./steps/Welcome";
 import {ViewFlintsbach} from "./steps/ViewFlintsbach";
 import {Loading} from "./steps/Loading";
+import {Plugins} from '@capacitor/core';
+
+const {Storage} = Plugins;
+
 
 enum Step {
     Welcome,
     ViewFlintsbach,
 }
 
+const currentStepStorageKey = 'currentStep';
+
 const Home: React.FC = () => {
 
     const [step, setStep] = useState<Step | undefined>();
 
+    const setCurrentStepFromStorage = async () => {
+        const currentStep = await Storage.get({key: currentStepStorageKey})
+        setStep(currentStep?.value ? Number(currentStep.value) : Step.Welcome)
+    }
+
     useEffect(() => {
-        console.log('use effect')
-        setStep(Step.Welcome)
+        // TODO error handling
+        setCurrentStepFromStorage()
     }, [])
 
-    const goToNextStep = () => {
-        const newStep = step !== undefined ? step + 1 : undefined;
+    const goToNextStep = async () => {
+        const newStep = step !== undefined ? step + 1 : Step.Welcome;
+        await Storage.set({key: currentStepStorageKey, value: newStep?.toString()})
         setStep(newStep)
     }
 
