@@ -2,9 +2,9 @@ import React, {useState} from "react";
 import {IonButton, IonInput, IonToast} from "@ionic/react";
 
 
-type CheckInputProps = { correctValue: string, placeholder: string, buttonText?: string, successMessage?: string, errorMessage?: string, onSuccess: () => void };
+type CheckInputProps = { correctValues: string[], placeholder: string, buttonText?: string, successMessage?: string, errorMessage?: string, onSuccess: () => void };
 
-export const CheckInput: React.FC<CheckInputProps> = ({correctValue, placeholder, buttonText, successMessage, errorMessage, onSuccess}) => {
+export const CheckInput: React.FC<CheckInputProps> = ({correctValues, placeholder, buttonText, successMessage, errorMessage, onSuccess}) => {
     const [inputValue, setInputValue] = useState<string>();
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
     const [showError, setShowError] = useState<boolean>(false);
@@ -17,7 +17,7 @@ export const CheckInput: React.FC<CheckInputProps> = ({correctValue, placeholder
     };
 
     const onCheckInput = () => {
-        if (correctValue.toLocaleLowerCase() === inputValue?.toLocaleLowerCase()) {
+        if (correctValues.includes((inputValue || '').toLocaleLowerCase())) {
             setShowSuccess(true)
         } else {
             setShowError(true)

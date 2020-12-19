@@ -8,6 +8,8 @@ import {Plugins} from '@capacitor/core';
 import {Castle} from "./steps/Castle";
 import {InitialPassword} from "./tarek/InitialPassword";
 import {CoordinatesLake} from "./tarek/CoordinatesLake";
+import {Hochstand} from "./tarek/Hochstand";
+import {Sesam} from "./tarek/Sesam";
 
 const {Storage} = Plugins;
 
@@ -21,6 +23,8 @@ enum StepEvi {
 enum StepTarek {
     InitialPassword,
     CoordinatesLake,
+    Hochstand,
+    Sesam,
 }
 
 const currentStepStorageKey = 'currentStep';
@@ -64,6 +68,10 @@ const Home: React.FC = () => {
                 return <InitialPassword goToNextStep={goToNextStep}/>
             case StepTarek.CoordinatesLake:
                 return <CoordinatesLake goToNextStep={goToNextStep}/>
+            case StepTarek.Hochstand:
+                return <Hochstand goToNextStep={goToNextStep}/>
+            case StepTarek.Sesam:
+                return <Sesam goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }

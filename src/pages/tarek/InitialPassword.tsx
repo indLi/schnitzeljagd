@@ -7,7 +7,7 @@ export const InitialPassword: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
         <IonCard style={{paddingTop: '12px'}}>
-            <CheckInput correctValue={'blacky13'} placeholder={'Passwort'} onSuccess={goToNextStep} buttonText={'START'}/>
+            <CheckInput correctValues={['blacky13']} placeholder={'Passwort'} onSuccess={goToNextStep} buttonText={'START'}/>
         </IonCard>
     );
 };
