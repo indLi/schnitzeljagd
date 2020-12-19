@@ -10,6 +10,7 @@ import {InitialPassword} from "./tarek/InitialPassword";
 import {CoordinatesLake} from "./tarek/CoordinatesLake";
 import {Hochstand} from "./tarek/Hochstand";
 import {Sesam} from "./tarek/Sesam";
+import {Weber} from "./tarek/Weber";
 
 const {Storage} = Plugins;
 
@@ -25,6 +26,7 @@ enum StepTarek {
     CoordinatesLake,
     Hochstand,
     Sesam,
+    Weber
 }
 
 const currentStepStorageKey = 'currentStep';
@@ -72,6 +74,8 @@ const Home: React.FC = () => {
                 return <Hochstand goToNextStep={goToNextStep}/>
             case StepTarek.Sesam:
                 return <Sesam goToNextStep={goToNextStep}/>
+            case StepTarek.Weber:
+                return <Weber goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
