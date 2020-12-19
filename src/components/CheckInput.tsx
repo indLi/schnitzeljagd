@@ -35,7 +35,7 @@ export const CheckInput: React.FC<CheckInputProps> = ({correctValues, placeholde
                     onSuccess()
                 }}
                 message={successMessage || 'Juhuuu, richtig!'}
-                duration={2000}
+                duration={1000}
             />
             <IonToast
                 color={'danger'}

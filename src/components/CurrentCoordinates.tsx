@@ -60,7 +60,7 @@ export const CurrentCoordinates: React.FC<CurrentCoordinatesProps> = ({latitude,
                     arrived()
                 }}
                 message={successMessage || 'Juhuuu, geschafft!'}
-                duration={2000}
+                duration={1000}
             />
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '24px 0'}}>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '24px'}}>

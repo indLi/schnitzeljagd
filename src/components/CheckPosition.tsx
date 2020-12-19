@@ -78,7 +78,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                     arrived()
                 }}
                 message={successMessage || 'Juhuuu, geschafft!'}
-                duration={2000}
+                duration={1000}
             />
             <IonToast
                 color={'danger'}
