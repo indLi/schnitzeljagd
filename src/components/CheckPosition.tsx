@@ -30,11 +30,10 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
     const [positionError, setPositionError] = useState<LocationError>({showError: false});
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
     const [distanceError, setDistanceError] = useState<string>();
-    const [result, setResult] = useState<string>();
 
     const checkPosition = (position: Geoposition): { didArrive: boolean, distance: number } => {
         const squaredDistance = Math.sqrt(position.coords.latitude - latitude) + Math.sqrt(position.coords.longitude - longitude);
-        return {didArrive: squaredDistance < (Math.sqrt(accuracy || 20)), distance: squaredDistance};
+        return {didArrive: squaredDistance < (Math.sqrt(accuracy || 0.002)), distance: squaredDistance};
     }
 
     const getLocation = async () => {
