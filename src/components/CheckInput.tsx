@@ -44,7 +44,7 @@ export const CheckInput: React.FC<CheckInputProps> = ({correctValues, placeholde
                 onDidDismiss={() => {
                     setShowError(false);
                 }}
-                message={errorMessage || 'leider falsch...'}
+                message={errorMessage || 'Leider falsch...'}
                 duration={2000}
             />
             <IonInput style={{backgroundColor: 'white', border: '1px solid #dedede', textAlign: 'center'}} placeholder={placeholder}
