@@ -5,24 +5,31 @@ import {Welcome} from "./steps/Welcome";
 import {ViewFlintsbach} from "./steps/ViewFlintsbach";
 import {Loading} from "./steps/Loading";
 import {Plugins} from '@capacitor/core';
+import {Castle} from "./steps/Castle";
+import {InitialPassword} from "./tarek/InitialPassword";
 
 const {Storage} = Plugins;
 
 
-enum Step {
+enum StepEvi {
     Welcome,
     ViewFlintsbach,
+    Castle
+}
+
+enum StepTarek {
+    Welcome,
 }
 
 const currentStepStorageKey = 'currentStep';
 
 const Home: React.FC = () => {
-
-    const [step, setStep] = useState<Step | undefined>();
+    const [person] = useState<'evi' | 'tarek'>('evi');
+    const [step, setStep] = useState<StepEvi | StepTarek | undefined>();
 
     const setCurrentStepFromStorage = async () => {
         const currentStep = await Storage.get({key: currentStepStorageKey})
-        setStep(currentStep?.value ? Number(currentStep.value) : Step.Welcome)
+        setStep(currentStep?.value ? Number(currentStep.value) : 0)
     }
 
     useEffect(() => {
@@ -31,21 +38,40 @@ const Home: React.FC = () => {
     }, [])
 
     const goToNextStep = async () => {
-        const newStep = step !== undefined ? step + 1 : Step.Welcome;
+        const newStep = step !== undefined ? step + 1 : StepEvi.Welcome;
         await Storage.set({key: currentStepStorageKey, value: newStep?.toString()})
         setStep(newStep)
     }
 
-    const getCurrentStep = () => {
+    const getCurrentStepEvi = () => {
         switch (step) {
-            case Step.Welcome:
+            case StepEvi.Welcome:
                 return <Welcome goToNextStep={goToNextStep}/>
-            case Step.ViewFlintsbach:
+            case StepEvi.ViewFlintsbach:
                 return <ViewFlintsbach goToNextStep={goToNextStep}/>
+            case StepEvi.Castle:
+                return <Castle goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
+    }
 
+    const getCurrentStepTarek = () => {
+        switch (step) {
+            case StepTarek.Welcome:
+                return <InitialPassword goToNextStep={goToNextStep}/>
+            default:
+                return <Loading/>
+        }
+    }
+
+    const getCurrentStep = () => {
+        if(person === 'tarek') {
+            return getCurrentStepTarek()
+        } else if (person === 'evi') {
+            return  getCurrentStepEvi()
+        }
+        return <div>keine person konfiguriert</div>
     }
 
     return (

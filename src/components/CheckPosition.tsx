@@ -15,7 +15,7 @@ interface CheckPositionProps {
     successMessage?: string;
 }
 
-const getDistanceMessage = (distance: number) => {
+const getDistanceErrorMessage = (distance: number) => {
     if (distance < Math.sqrt(10)) {
         return 'ganz knapp'
     } else if (distance < Math.sqrt(20)) {
@@ -27,8 +27,9 @@ const getDistanceMessage = (distance: number) => {
 
 export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude, arrived, successMessage, accuracy}) => {
     const [loading, setLoading] = useState<boolean>(false);
-    const [error, setError] = useState<LocationError>({showError: false});
+    const [positionError, setPositionError] = useState<LocationError>({showError: false});
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
+    const [distanceError, setDistanceError] = useState<string>();
     const [result, setResult] = useState<string>();
 
     const checkPosition = (position: Geoposition): { didArrive: boolean, distance: number } => {
@@ -42,16 +43,16 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
         try {
             const position = await Geolocation.getCurrentPosition();
             setLoading(false);
-            setError({showError: false});
+            setPositionError({showError: false});
             const checkedPosition = checkPosition(position);
             if (checkedPosition.didArrive) {
-                setResult(undefined)
+                setDistanceError(undefined)
                 setShowSuccess(true)
             } else {
-                setResult(getDistanceMessage(checkedPosition.distance));
+                setDistanceError(getDistanceErrorMessage(checkedPosition.distance));
             }
         } catch (e) {
-            setError({showError: true, message: e.message});
+            setPositionError({showError: true, message: e.message});
             setLoading(false);
         }
     }
@@ -64,9 +65,9 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                 message={'Ok, ich such dich...'}
             />
             <IonToast
-                isOpen={error.showError}
-                onDidDismiss={() => setError({message: "", showError: false})}
-                message={error.message}
+                isOpen={positionError.showError}
+                onDidDismiss={() => setPositionError({message: "", showError: false})}
+                message={positionError.message}
                 duration={3000}
             />
             <IonToast
@@ -80,9 +81,18 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                 message={successMessage || 'Juhuuu, geschafft!'}
                 duration={2000}
             />
+            <IonToast
+                color={'danger'}
+                position={'middle'}
+                isOpen={!!distanceError}
+                onDidDismiss={() => {
+                    setDistanceError(undefined);
+                }}
+                message={distanceError}
+                duration={2000}
+            />
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '24px'}}>
                 <IonButton color="primary" onClick={getLocation}>{'Bin ich schon da?'}</IonButton>
-                {result ? <IonChip onClick={() => setResult(undefined)} color={'secondary'}>{result}</IonChip> : null}
             </div>
         </>
     );
