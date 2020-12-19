@@ -75,7 +75,7 @@ export const CurrentCoordinates: React.FC<CurrentCoordinatesProps> = ({latitude,
 
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
                     <IonButton style={{marginRight: '12px'}} onClick={getLocation}>
-                        <IonIcon style={{fontSize: '30px', marginRight: '12px'}} icon={walkOutline}/>
+                        <IonIcon style={{fontSize: '30px'}} icon={walkOutline}/>
                     </IonButton>
                     {position ? <div style={{
                         display: 'flex',

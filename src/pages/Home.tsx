@@ -140,7 +140,7 @@ const Home: React.FC = () => {
 
     return (
         <IonPage>
-            <IonContent fullscreen style={{'--background': '#fffaf7'}}>
+            <IonContent fullscreen style={{'--background': person === 'tarek' ? '#ffda6b' : '#fffaf7'}}>
                 <div style={{padding: '24px 12px'}}>
                     {getCurrentStep()}
                 </div>
