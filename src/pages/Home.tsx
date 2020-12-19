@@ -16,6 +16,7 @@ import {KarteWegKreuz} from "./tarek/KarteWegKreuz";
 import {Verboten} from "./tarek/Verboten";
 import {ZumTurm} from "./tarek/ZumTurm";
 import {Stufen} from "./tarek/Stufen";
+import {Berge} from "./tarek/Berge";
 
 const {Storage} = Plugins;
 
@@ -37,6 +38,7 @@ enum StepTarek {
     Verboten,
     ZumTurm,
     Stufen,
+    Berge,
 }
 
 const currentStepStorageKey = 'currentStep';
@@ -96,6 +98,8 @@ const Home: React.FC = () => {
                 return <ZumTurm goToNextStep={goToNextStep}/>
             case StepTarek.Stufen:
                 return <Stufen goToNextStep={goToNextStep}/>
+            case StepTarek.Berge:
+                return <Berge goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
