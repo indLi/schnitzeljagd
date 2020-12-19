@@ -15,6 +15,7 @@ import {WeberWappen} from "./tarek/WeberWappen";
 import {KarteWegKreuz} from "./tarek/KarteWegKreuz";
 import {Verboten} from "./tarek/Verboten";
 import {ZumTurm} from "./tarek/ZumTurm";
+import {Stufen} from "./tarek/Stufen";
 
 const {Storage} = Plugins;
 
@@ -35,6 +36,7 @@ enum StepTarek {
     KarteWebKreuz,
     Verboten,
     ZumTurm,
+    Stufen,
 }
 
 const currentStepStorageKey = 'currentStep';
@@ -92,6 +94,8 @@ const Home: React.FC = () => {
                 return <Verboten goToNextStep={goToNextStep}/>
             case StepTarek.ZumTurm:
                 return <ZumTurm goToNextStep={goToNextStep}/>
+            case StepTarek.Stufen:
+                return <Stufen goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
