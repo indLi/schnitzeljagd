@@ -2,6 +2,7 @@ import React, {useState} from "react";
 import {Geolocation, Geoposition} from "@ionic-native/geolocation";
 import {IonButton, IonIcon, IonText, IonToast} from "@ionic/react";
 import {flagOutline, walkOutline} from "ionicons/icons";
+import {headingDistanceTo} from 'geolocation-utils'
 
 
 interface LocationError {
@@ -23,9 +24,10 @@ export const CurrentCoordinates: React.FC<CurrentCoordinatesProps> = ({latitude,
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
 
     const checkPosition = (position: Geoposition): { didArrive: boolean, distance: number } => {
-        const squaredDistance = Math.pow(position.coords.latitude - latitude, 2) + Math.pow(position.coords.longitude - longitude, 2);
-        const distance = Math.sqrt(squaredDistance);
-        return {didArrive: distance < ((accuracy || 0.002)), distance};
+        const from = {lat: position.coords.latitude, lon: position.coords.longitude}
+        const to = {lat: latitude, lon: longitude}
+        const headingDistance = headingDistanceTo(from, to);
+        return {didArrive: headingDistance.distance < ((accuracy || 20)), distance: headingDistance.distance};
     }
 
     const getLocation = async () => {
@@ -65,7 +67,7 @@ export const CurrentCoordinates: React.FC<CurrentCoordinatesProps> = ({latitude,
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '24px 0'}}>
                 <div style={{display: 'flex', flexDirection: 'row', alignItems: 'center', marginBottom: '24px'}}>
                     <IonIcon style={{fontSize: '30px', marginRight: '12px'}} icon={flagOutline}/>
-                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontSize: '20px'}}>
+                    <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontSize: '20px', alignItems: 'flex-end'}}>
                         <IonText>{latitude}</IonText>
                         <IonText>{longitude}</IonText>
                     </div>
@@ -75,9 +77,15 @@ export const CurrentCoordinates: React.FC<CurrentCoordinatesProps> = ({latitude,
                     <IonButton style={{marginRight: '12px'}} onClick={getLocation}>
                         <IonIcon style={{fontSize: '30px', marginRight: '12px'}} icon={walkOutline}/>
                     </IonButton>
-                    {position ? <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between', fontSize: '20px'}}>
-                        <IonText>{position.coords.latitude}</IonText>
-                        <IonText>{position.coords.longitude}</IonText>
+                    {position ? <div style={{
+                        display: 'flex',
+                        flexDirection: 'column',
+                        justifyContent: 'space-between',
+                        fontSize: '20px',
+                        alignItems: 'flex-end'
+                    }}>
+                        <IonText>{position.coords.latitude.toFixed(5)}</IonText>
+                        <IonText>{position.coords.longitude.toFixed(5)}</IonText>
                     </div> : null}
                 </div>
             </div>

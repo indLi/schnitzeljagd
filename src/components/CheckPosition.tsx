@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import {Geolocation, Geoposition} from "@ionic-native/geolocation";
-import {IonButton, IonChip, IonLoading, IonToast} from "@ionic/react";
+import {IonButton, IonLoading, IonToast} from "@ionic/react";
+import {headingDistanceTo} from "geolocation-utils";
 
 interface LocationError {
     showError: boolean;
@@ -33,8 +34,10 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
     const [distanceError, setDistanceError] = useState<string>();
 
     const checkPosition = (position: Geoposition): { didArrive: boolean, distance: number } => {
-        const squaredDistance = Math.sqrt(position.coords.latitude - latitude) + Math.sqrt(position.coords.longitude - longitude);
-        return {didArrive: squaredDistance < (Math.sqrt(accuracy || 0.002)), distance: squaredDistance};
+        const from = {lat: position.coords.latitude, lon: position.coords.longitude}
+        const to = {lat: latitude, lon: longitude}
+        const headingDistance = headingDistanceTo(from, to);
+        return {didArrive: headingDistance.distance < ((accuracy || 20)), distance: headingDistance.distance};
     }
 
     const getLocation = async () => {
