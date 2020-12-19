@@ -13,6 +13,7 @@ interface CheckPositionProps {
     accuracy?: number;
     arrived: () => void;
     successMessage?: string;
+    buttonText?: string;
 }
 
 const getDistanceErrorMessage = (distance: number) => {
@@ -25,7 +26,7 @@ const getDistanceErrorMessage = (distance: number) => {
     }
 }
 
-export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude, arrived, successMessage, accuracy}) => {
+export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude, arrived, successMessage, accuracy, buttonText}) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [positionError, setPositionError] = useState<LocationError>({showError: false});
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
@@ -91,7 +92,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                 duration={2000}
             />
             <div style={{display: 'flex', flexDirection: 'column', alignItems: 'center', marginTop: '24px'}}>
-                <IonButton color="primary" onClick={getLocation}>{'Bin ich schon da?'}</IonButton>
+                <IonButton color="primary" onClick={getLocation}>{buttonText || 'Bin ich schon da?'}</IonButton>
             </div>
         </>
     );

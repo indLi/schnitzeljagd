@@ -3,15 +3,13 @@ import {StepProps} from "../steps/commonSteps";
 import {IonCard, IonCardContent} from "@ionic/react";
 import {CheckInput} from "../../components/CheckInput";
 
-export const Sesam: React.FC<StepProps> = ({goToNextStep}) => {
-
+export const AlfonsNachbar: React.FC<StepProps> = ({goToNextStep}) => {
     return (
         <IonCard style={{paddingTop: '12px'}}>
             <IonCardContent>
-                Gehe in diese Richtung bis zum nächsten Gewässer. <br/><br/>
-                Am kleinen Christbaum am Eck findest du den nächsten Hinweis.
+                Wie sind die Initialen seines Nachbars?
             </IonCardContent>
-            <CheckInput correctValues={['sesam']} placeholder={'Lösungswort'} onSuccess={goToNextStep}/>
+            <CheckInput correctValues={['ab', 'a.b.']} placeholder={'der Nachbar...'} onSuccess={goToNextStep} buttonText={'Meint ihr den?'} errorMessage={'Nein, probier\'s nochmal'}/>
         </IonCard>
     );
 }
