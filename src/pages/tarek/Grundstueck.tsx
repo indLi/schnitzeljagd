@@ -8,7 +8,7 @@ export const Grundstueck: React.FC<StepProps> = ({goToNextStep}) => {
     return (
         <IonCard style={{paddingTop: '12px'}}>
             <IonCardContent>
-                Gehe zu Flurstück xxx <br/> <br/>
+                Gehe zu Flurstück 5926 <br/> <br/>
                 Kleiner Tipp:
             </IonCardContent>
             <CurrentDistance latitude={48.23484} longitude={7.81123} arrived={() => goToNextStep()}/>.
