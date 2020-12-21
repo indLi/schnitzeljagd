@@ -18,12 +18,12 @@ interface CheckPositionProps {
 }
 
 const getDistanceErrorMessage = (distance: number) => {
-    if (distance < Math.sqrt(10)) {
+    if (distance < 75) {
         return 'ganz knapp'
-    } else if (distance < Math.sqrt(20)) {
-        return 'ganz gut'
+    } else if (distance < 500) {
+        return 'Noch nicht ganz'
     } else {
-        return 'ganz kalt, such noch ein bisschen weiter'
+        return 'Ganz kalt, such noch ein bisschen weiter.'
     }
 }
 

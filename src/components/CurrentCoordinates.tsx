@@ -32,7 +32,7 @@ export const CurrentCoordinates: React.FC<CurrentCoordinatesProps> = ({latitude,
 
     const getLocation = async () => {
         try {
-            const position = await Geolocation.getCurrentPosition();
+            const position = await Geolocation.getCurrentPosition({enableHighAccuracy:true});
             setPosition(position);
             setPositionError({showError: false});
             const checkedPosition = checkPosition(position);
