@@ -8,7 +8,7 @@ export const Sesam: React.FC<StepProps> = ({goToNextStep}) => {
     return (
         <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
-                Gehe in diese Richtung bis zum nächsten Gewässer. <br/><br/>
+                Gehe den Weg Richtung Süden zum nächsten Gewässer. <br/><br/>
                 Am kleinen Christbaum am Eck findest du den nächsten Hinweis.
             </IonCardContent>
             <CheckInput correctValues={['sesam']} placeholder={'Lösungswort'} onSuccess={goToNextStep}/>
