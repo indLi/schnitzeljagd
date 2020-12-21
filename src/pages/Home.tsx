@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonContent, IonPage} from '@ionic/react';
+import {IonContent, IonPage, IonButton, IonModal} from '@ionic/react';
 import './Home.css';
 import {Welcome} from "./steps/Welcome";
 import {ViewFlintsbach} from "./steps/ViewFlintsbach";
@@ -58,6 +58,7 @@ const currentStepStorageKey = 'currentStep';
 const Home: React.FC = () => {
     const [person] = useState<'evi' | 'tarek'>('tarek');
     const [step, setStep] = useState<StepEvi | StepTarek | undefined>();
+    const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
 
     const setCurrentStepFromStorage = async () => {
         const currentStep = await Storage.get({key: currentStepStorageKey})
@@ -140,7 +141,14 @@ const Home: React.FC = () => {
 
     return (
         <IonPage>
+            <IonModal isOpen={showPasswordModal} cssClass='my-custom-class'>
+                <p>This is modal content</p>
+                <IonButton onClick={() => setShowPasswordModal(false)}>Close Modal</IonButton>
+            </IonModal>
             <IonContent fullscreen style={{'--background': person === 'tarek' ? '#ffda6b' : '#fffaf7'}}>
+                <IonButton onDoubleClick={() => {
+                   setShowPasswordModal(true)
+                }}/>
                 <div style={{padding: '24px 12px'}}>
                     {getCurrentStep()}
                 </div>
