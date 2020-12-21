@@ -6,7 +6,7 @@ import {CheckInput} from "../../components/CheckInput";
 export const GrundstueckBaum: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 Diesmal ist der Christbaum ein bisschen größer!
             </IonCardContent>

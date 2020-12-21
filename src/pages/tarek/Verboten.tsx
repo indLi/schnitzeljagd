@@ -6,7 +6,7 @@ import {CheckInput} from "../../components/CheckInput";
 export const Verboten: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 Was ist hier verboten?
             </IonCardContent>

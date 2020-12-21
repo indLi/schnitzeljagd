@@ -6,7 +6,7 @@ import {CheckInput} from "../../components/CheckInput";
 export const Hochstand: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 Schaue nach Süden, was für ein Holzbauwerk siehst du?
             </IonCardContent>

@@ -6,7 +6,7 @@ import {StepProps} from "../steps/commonSteps";
 
 export const Bier: React.FC = () => {
     return (
-        <IonCard style={{paddingBottom: '32px'}}>
+        <IonCard style={{paddingBottom: '32px', marginBottom: '0'}}>
             <IonCardContent style={{fontSize: '14px'}}>
                 Der Topf ist ... <br/>
                 Du bist so schlau. <br/>

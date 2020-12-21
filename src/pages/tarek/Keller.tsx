@@ -6,7 +6,7 @@ import {StepProps} from "../steps/commonSteps";
 
 export const Keller: React.FC<StepProps> = ({goToNextStep}) => {
     return (
-        <IonCard style={{paddingBottom: '32px'}}>
+        <IonCard style={{paddingBottom: '32px', marginBottom: '0'}}>
             <IonCardContent style={{fontSize: '14px'}}>
                 Begonnen hat's oben, <br/>
                 wir wollen dich loben. <br/>

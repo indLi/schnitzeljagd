@@ -6,7 +6,7 @@ import {StepProps} from "../steps/commonSteps";
 
 export const ZumTurm: React.FC<StepProps> = ({goToNextStep}) => {
     return (
-        <IonCard style={{paddingBottom: '32px'}}>
+        <IonCard style={{paddingBottom: '32px', marginBottom: '0'}}>
             <IonCardContent>
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '32px', fontSize: '24px'}}>
                     <img height={30} style={{marginRight: '12px'}} src='./assets/images/raute.gif'/>

@@ -6,7 +6,7 @@ import {CheckInput} from "../../components/CheckInput";
 export const Sesam: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 Gehe in diese Richtung bis zum nächsten Gewässer. <br/><br/>
                 Am kleinen Christbaum am Eck findest du den nächsten Hinweis.

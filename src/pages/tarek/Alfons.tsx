@@ -6,7 +6,7 @@ import {StepProps} from "../steps/commonSteps";
 
 export const Alfons: React.FC<StepProps> = ({goToNextStep}) => {
     return (
-        <IonCard style={{paddingBottom: '32px'}}>
+        <IonCard style={{paddingBottom: '32px', marginBottom: '0'}}>
             <IonCardContent>
                Besuche Opa Alfons.
             </IonCardContent>

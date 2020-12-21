@@ -5,7 +5,7 @@ import {CheckInput} from "../../components/CheckInput";
 
 export const AlfonsNachbar: React.FC<StepProps> = ({goToNextStep}) => {
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 Wie sind die Initialen seines Nachbars?
             </IonCardContent>

@@ -163,6 +163,7 @@ const Home: React.FC = () => {
         return <div>keine person konfiguriert</div>
     }
 
+    const backgroundColor = person === 'tarek' ? '#ffda6b' : '#fffaf7';
     return (
         <IonPage>
             <IonModal isOpen={showPasswordModal}>
@@ -188,15 +189,17 @@ const Home: React.FC = () => {
                 </div>
                 <IonButton onClick={() => setShowCheatModal(false)}>Ich habe nur zufällig das Passwort erraten</IonButton>
             </IonModal>
-            <IonContent fullscreen style={{'--background': person === 'tarek' ? '#ffda6b' : '#fffaf7'}}>
-                <div style={{width: '100px', height: '100px', backgroundColor: 'red'}} onClick={() => {
-                    setSecretTouch(secretTouch + '1');
-                }}/>
-                <div style={{width: '100px', height: '100px', backgroundColor: 'green'}} onClick={() => {
-                    setSecretTouch(secretTouch + '2');
-                }}/>
-                <div style={{padding: '24px 12px'}}>
+            <IonContent fullscreen style={{'--background': backgroundColor}}>
+                <div style={{padding: '24px 12px 0 12px'}}>
                     {getCurrentStep()}
+                </div>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'space-between'}}>
+                    <div style={{width: '100px', height: '100px', backgroundColor: backgroundColor}} onClick={() => {
+                        setSecretTouch(secretTouch + '1');
+                    }}/>
+                    <div style={{width: '100px', height: '100px', backgroundColor: backgroundColor}} onClick={() => {
+                        setSecretTouch(secretTouch + '2');
+                    }}/>
                 </div>
             </IonContent>
         </IonPage>

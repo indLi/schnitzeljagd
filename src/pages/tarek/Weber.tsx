@@ -6,7 +6,7 @@ import {StepProps} from "../steps/commonSteps";
 
 export const Weber: React.FC<StepProps> = ({goToNextStep}) => {
     return (
-        <IonCard style={{paddingBottom: '32px'}}>
+        <IonCard style={{paddingBottom: '32px', marginBottom: '0'}}>
             <img src='./assets/images/weber.jpeg'/>
             <IonCardContent>
                 Wo wurde dieses Foto aufgenommen?

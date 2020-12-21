@@ -6,7 +6,7 @@ import {CheckInput} from "../../components/CheckInput";
 export const Berge: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '32px'}}>
                     Summiere alle Höhenangaben (auch doppelte)!

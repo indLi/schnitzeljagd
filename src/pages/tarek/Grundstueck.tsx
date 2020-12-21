@@ -6,7 +6,7 @@ import {CurrentDistance} from "../../components/CurrentDistance";
 export const Grundstueck: React.FC<StepProps> = ({goToNextStep}) => {
 
     return (
-        <IonCard style={{paddingTop: '12px'}}>
+        <IonCard style={{paddingBottom: '12px', marginBottom: '0'}}>
             <IonCardContent>
                 Gehe zu Flurstück 5926 <br/> <br/>
                 Kleiner Tipp:
