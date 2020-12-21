@@ -85,8 +85,22 @@ const Home: React.FC = () => {
     useEffect(() => {
         if (person === 'tarek') {
             setBackgroundColor('#ffda6b')
+            document.body.style.setProperty('--ion-color-primary', '#15a1d0');
+            document.body.style.setProperty('--ion-color-primary-shade', '#128eb7');
+            document.body.style.setProperty('--ion-color-primary-contrast', '#ffffff');
+
+            document.body.style.setProperty('--ion-color-secondary', '#009b8b');
+            document.body.style.setProperty('--ion-color-secondary-shade', '#00887a');
+            document.body.style.setProperty('--ion-color-secondary-contrast', '#ffffff');
         } else if (person === 'evi') {
             setBackgroundColor('#fffaf7')
+            document.body.style.setProperty('--ion-color-primary', '#f58b95');
+            document.body.style.setProperty('--ion-color-primary-shade', '#d87a83');
+            document.body.style.setProperty('--ion-color-primary-contrast', '#ffffff');
+
+            document.body.style.setProperty('--ion-color-secondary', '#72eab7');
+            document.body.style.setProperty('--ion-color-secondary-shade', '#64cea1');
+            document.body.style.setProperty('--ion-color-secondary-contrast', '#000000');
         }
     }, [person])
 
