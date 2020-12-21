@@ -10,7 +10,7 @@ export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
         <div>
             <DescriptionText><p>Soeben ist eine Postkarte für dich angekommen: </p><br/></DescriptionText>
             <IonCard>
-                <img src='./assets/images/flintsbach.jpg'/>
+                <img src='schnitzeljagd/assets/images/flintsbach.jpg'/>
                 <IonCardHeader>
                     <IonCardTitle>Hallo Evi</IonCardTitle>
                 </IonCardHeader>

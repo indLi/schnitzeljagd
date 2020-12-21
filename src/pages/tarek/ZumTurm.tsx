@@ -9,7 +9,7 @@ export const ZumTurm: React.FC<StepProps> = ({goToNextStep}) => {
         <IonCard style={{paddingBottom: '32px', marginBottom: '0'}}>
             <IonCardContent>
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '32px', fontSize: '24px'}}>
-                    <img height={30} style={{marginRight: '12px'}} src='./assets/images/raute.gif'/>
+                    <img height={30} style={{marginRight: '12px'}} src='schnitzeljagd/assets/images/raute.gif'/>
                     1,0 km
                 </div>
             </IonCardContent>

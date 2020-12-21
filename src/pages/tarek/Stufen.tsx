@@ -10,7 +10,7 @@ export const Stufen: React.FC<StepProps> = ({goToNextStep}) => {
             <IonCardContent>
                 <div style={{display: 'flex', justifyContent: 'center', marginTop: '32px'}}>
                     Wie viele
-                    <img height={20} style={{margin: '0 6px'}} src='./assets/images/stufen.jpg'/>
+                    <img height={20} style={{margin: '0 6px'}} src='schnitzeljagd/assets/images/stufen.jpg'/>
                     sind es bis oben?
                 </div>
             </IonCardContent>
