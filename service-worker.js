@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/schnitzeljagd/precache-manifest.e2b0a98fad1b4ec9f17a000372840457.js"
+  "/schnitzeljagd/precache-manifest.17d15f4dea632088db217a1b3f824ca0.js"
 );
 
 self.addEventListener('message', (event) => {
