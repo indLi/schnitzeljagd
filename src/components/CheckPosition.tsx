@@ -17,13 +17,23 @@ interface CheckPositionProps {
     buttonText?: string;
 }
 
-const getDistanceErrorMessage = (distance: number) => {
-    if (distance < 75) {
-        return 'ganz knapp'
-    } else if (distance < 500) {
-        return 'Noch nicht ganz'
+const getDistanceErrorMessage = (distance: number, accuracy: number) => {
+    if (distance < accuracy + 25) {
+        return 'Ganz heiß. Ich verbrenne mich.'
+    } else if (distance < accuracy + 100) {
+        return 'Nicht mehr weit. Ich fange an zu schwitzen.'
+    } else if (distance < accuracy + 300) {
+        return 'Noch nicht ganz. Ok, jetzt kannst du die Jacke ausziehen.'
+    } else if (distance < accuracy + 500) {
+        return 'Ganz ok, aber kalt ist es mir trotzdem noch.'
+    } else if (distance < accuracy + 1000) {
+        return 'Brrr, ganz schön kalt.'
+    }  else if (distance < accuracy + 2000) {
+        return 'Von wegen Klimaerwärmung.'
+    } else if (distance < accuracy + 3000) {
+        return 'Achtung, Glatteis.'
     } else {
-        return 'Ganz kalt, such noch ein bisschen weiter.'
+        return 'Auf Spitzbergen war\'s wärmer.'
     }
 }
 
@@ -37,7 +47,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
         const from = {lat: position.coords.latitude, lon: position.coords.longitude}
         const to = {lat: latitude, lon: longitude}
         const headingDistance = headingDistanceTo(from, to);
-        return {didArrive: headingDistance.distance < ((accuracy || 20)), distance: headingDistance.distance};
+        return {didArrive: headingDistance.distance < ((accuracy || 50)), distance: headingDistance.distance};
     }
 
     const getLocation = async () => {
@@ -52,7 +62,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                 setDistanceError(undefined)
                 setShowSuccess(true)
             } else {
-                setDistanceError(getDistanceErrorMessage(checkedPosition.distance));
+                setDistanceError(getDistanceErrorMessage(checkedPosition.distance, accuracy || 50));
             }
         } catch (e) {
             setPositionError({showError: true, message: e.message});
