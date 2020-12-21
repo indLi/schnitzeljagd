@@ -2,18 +2,23 @@ import React, {useState} from "react";
 import {IonButton, IonInput, IonToast} from "@ionic/react";
 
 
-type CheckInputProps = { correctValues: string[], placeholder: string, buttonText?: string, successMessage?: string, errorMessage?: string, onSuccess: () => void };
+type CheckInputProps = { correctValues: string[], placeholder: string, buttonText?: string, successMessage?: string, errorMessage?: string, onSuccess: (value: string) => void };
 
-export const CheckInput: React.FC<CheckInputProps> = ({correctValues, placeholder, buttonText, successMessage, errorMessage, onSuccess}) => {
+export const CheckInput: React.FC<CheckInputProps> = ({
+                                                          correctValues,
+                                                          placeholder,
+                                                          buttonText,
+                                                          successMessage,
+                                                          errorMessage,
+                                                          onSuccess
+                                                      }) => {
     const [inputValue, setInputValue] = useState<string>();
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
     const [showError, setShowError] = useState<boolean>(false);
 
 
     const enterInput = (customEvent: CustomEvent) => {
-        const value = customEvent.detail.value;
-        console.log(value)
-        setInputValue(value)
+        setInputValue(customEvent.detail.value)
     };
 
     const onCheckInput = () => {
@@ -31,8 +36,10 @@ export const CheckInput: React.FC<CheckInputProps> = ({correctValues, placeholde
                 position={'middle'}
                 isOpen={showSuccess}
                 onDidDismiss={() => {
-                    setShowSuccess(false);
-                    onSuccess()
+                    if (inputValue) {
+                        setShowSuccess(false);
+                        onSuccess(inputValue)
+                    }
                 }}
                 message={successMessage || 'Juhuuu, richtig!'}
                 duration={1000}

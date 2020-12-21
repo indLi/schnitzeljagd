@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {IonButton, IonContent, IonModal, IonPage, IonInput} from '@ionic/react';
+import {IonButton, IonContent, IonInput, IonModal, IonPage} from '@ionic/react';
 import './Home.css';
 import {Welcome} from "./steps/Welcome";
 import {ViewFlintsbach} from "./steps/ViewFlintsbach";
@@ -29,6 +29,7 @@ const {Storage} = Plugins;
 
 
 enum StepEvi {
+    InitialPassword,
     Welcome,
     ViewFlintsbach,
     Castle
@@ -55,25 +56,39 @@ enum StepTarek {
 }
 
 const currentStepStorageKey = 'currentStep';
+const personStorageKey = 'person';
+
+export type Person = 'evi' | 'tarek';
 
 const Home: React.FC = () => {
-    const [person] = useState<'evi' | 'tarek'>('tarek');
+    const [person, setPerson] = useState<Person>();
     const [step, setStep] = useState<StepEvi | StepTarek | undefined>();
+    const [backgroundColor, setBackgroundColor] = useState<string>('#fbfbfb');
 
     const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
     const [showCheatModal, setShowCheatModal] = useState<boolean>(false);
     const [secretTouch, setSecretTouch] = useState<string>('');
     const [inputForStep, setInputForStep] = useState<string>();
 
-    const setCurrentStepFromStorage = async () => {
+    const setCurrentStepAndPersonFromStorage = async () => {
         const currentStep = await Storage.get({key: currentStepStorageKey})
+        const person = await Storage.get({key: personStorageKey})
         setStep(currentStep?.value ? Number(currentStep.value) : 0)
+        setPerson(person?.value as Person)
     }
 
     useEffect(() => {
         // TODO error handling
-        setCurrentStepFromStorage()
+        setCurrentStepAndPersonFromStorage()
     }, [])
+
+    useEffect(() => {
+        if (person === 'tarek') {
+            setBackgroundColor('#ffda6b')
+        } else if (person === 'evi') {
+            setBackgroundColor('#fffaf7')
+        }
+    }, [person])
 
     useEffect(() => {
         if (secretTouch === '121') {
@@ -87,6 +102,10 @@ const Home: React.FC = () => {
         return () => clearTimeout(timeout)
     }, [secretTouch])
 
+    const selectPerson = async (selectedPerson: Person) => {
+        await Storage.set({key: personStorageKey, value: selectedPerson})
+        setPerson(selectedPerson)
+    }
     const goToNextStep = async () => {
         const newStep = step !== undefined ? step + 1 : 0;
         await Storage.set({key: currentStepStorageKey, value: newStep?.toString()})
@@ -102,6 +121,8 @@ const Home: React.FC = () => {
 
     const getCurrentStepEvi = () => {
         switch (step) {
+            case StepEvi.InitialPassword:
+                return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
             case StepEvi.Welcome:
                 return <Welcome goToNextStep={goToNextStep}/>
             case StepEvi.ViewFlintsbach:
@@ -116,7 +137,7 @@ const Home: React.FC = () => {
     const getCurrentStepTarek = () => {
         switch (step) {
             case StepTarek.InitialPassword:
-                return <InitialPassword goToNextStep={goToNextStep}/>
+                return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
             case StepTarek.CoordinatesLake:
                 return <CoordinatesLake goToNextStep={goToNextStep}/>
             case StepTarek.Hochstand:
@@ -160,10 +181,9 @@ const Home: React.FC = () => {
         } else if (person === 'evi') {
             return getCurrentStepEvi()
         }
-        return <div>keine person konfiguriert</div>
+        return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
     }
 
-    const backgroundColor = person === 'tarek' ? '#ffda6b' : '#fffaf7';
     return (
         <IonPage>
             <IonModal isOpen={showPasswordModal}>
