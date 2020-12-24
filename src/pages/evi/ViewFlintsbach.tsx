@@ -1,8 +1,9 @@
 import React from "react";
 import {StepProps} from "./commonSteps";
 import {CheckPosition} from "../../components/CheckPosition";
-import {IonCard, IonCardContent, IonCardHeader, IonCardSubtitle, IonCardTitle, IonText} from "@ionic/react";
+import {IonCard, IonCardContent} from "@ionic/react";
 import {DescriptionText} from "../../components/DescriptionText";
+import {CurrentCoordinates} from "../../components/CurrentCoordinates";
 
 
 export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
@@ -21,7 +22,8 @@ export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
                 </IonCardContent>
             </IonCard>
             {/*TODO: insert correct position*/}
-            <CheckPosition latitude={28.12312} longitude={7.1237182} arrived={() => goToNextStep()}/>
+            <CheckPosition latitude={47.716295} longitude={12.130200} arrived={() => goToNextStep()}/>
+            <CurrentCoordinates latitude={47.716295} longitude={12.130200} arrived={goToNextStep}/>
         </div>
     );
 };

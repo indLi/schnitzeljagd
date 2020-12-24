@@ -24,6 +24,8 @@ import {AlfonsNachbar} from "./tarek/14_AlfonsNachbar";
 import {Keller} from "./tarek/15_Keller";
 import {Bier} from "./tarek/16_Bier";
 import {CheckInput} from "../components/CheckInput";
+import {ZumBaerlauch} from "./evi/ZumBaerlauch";
+import {Baerlauch} from "./evi/Baerlauch";
 
 const {Storage} = Plugins;
 
@@ -32,7 +34,9 @@ enum StepEvi {
     InitialPassword,
     Welcome,
     ViewFlintsbach,
-    Marienkaefer
+    Marienkaefer,
+    ZumBaerlauch,
+    Baerlauch,
 }
 
 enum StepTarek {
@@ -143,6 +147,10 @@ const Home: React.FC = () => {
                 return <ViewFlintsbach goToNextStep={goToNextStep}/>
             case StepEvi.Marienkaefer:
                 return <Marienkaefer goToNextStep={goToNextStep}/>
+            case StepEvi.ZumBaerlauch:
+                return <ZumBaerlauch goToNextStep={goToNextStep}/>
+            case StepEvi.Baerlauch:
+                return <Baerlauch goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
@@ -220,6 +228,10 @@ const Home: React.FC = () => {
                             setShowCheatModal(false)
                         }
                     }}>Und los!</IonButton>
+                </div>
+                <div>Person wechseln:
+                    <IonButton onClick={() => selectPerson('tarek')}>Tarek</IonButton>
+                    <IonButton onClick={() => selectPerson('evi')}>Evi</IonButton>
                 </div>
                 <IonButton onClick={() => setShowCheatModal(false)}>Ich habe nur zufällig das Passwort erraten</IonButton>
             </IonModal>
