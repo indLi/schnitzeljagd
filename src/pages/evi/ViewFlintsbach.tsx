@@ -11,15 +11,13 @@ export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
             <DescriptionText><p>Soeben ist eine Postkarte für dich angekommen: </p><br/></DescriptionText>
             <IonCard>
                 <img src='schnitzeljagd/assets/images/flintsbach.jpg'/>
-                <IonCardHeader>
-                    <IonCardTitle>Hallo Evi</IonCardTitle>
-                </IonCardHeader>
                 <IonCardContent>
-                    Auf meiner Reise habe ich einen wunderschönen und magischen Ort entdeckt. Hier müssen mal Könige gelebt haben.
-                    Ihr Thron, von dem man das ganze Land überblicken kann ist noch hier und man kann sich darauf setzen.
+                    Ich bin gerade zu Besuch bei einem alten Freund. Er regiert sein Königreich schon sehr lange. Von seinem Thron
+                    überblickt man das ganze Land. <br/>
+                    Ich komme immer gerne hier her, die Aussicht ist super.
                     <br/>
                     <br/>
-                    Deine Fee
+                    Sieh es dir am besten selbst an und komm auch her.
                 </IonCardContent>
             </IonCard>
             {/*TODO: insert correct position*/}

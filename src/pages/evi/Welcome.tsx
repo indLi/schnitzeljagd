@@ -1,20 +1,26 @@
 import React from "react";
-import {IonButton, IonText} from "@ionic/react";
+import {IonButton, IonCard, IonCardContent} from "@ionic/react";
 import {StepProps} from "./commonSteps";
 
 export const Welcome: React.FC<StepProps> = ({goToNextStep}) => {
-
     return (
         <>
-            <div style={{display: 'flex', flexDirection: 'column', padding: '32px'}}>
-                <IonText color={'dark'}>
-                    <h1>Hallo Evi</h1>
-                    <p>hast du sie auch gesehen usw</p>
-                    <p>lalal und blub und so</p>
-                    <br/>
-                    <p>Bist du bereit?</p>
-                </IonText>
-                <IonButton style={{alignSelf: 'center'}} onClick={goToNextStep}>Es kann los gehen</IonButton>
+            <IonCard style={{paddingBottom: '12px', paddingTop: '24px', marginBottom: '0'}}>
+                <IonCardContent>
+                    <p style={{fontSize: '20px'}}>Hallo Evi,</p>
+                    <p><br/>
+                        ich habe dich leider zu Hause nicht angetroffen. Deine Mutter meinte du bist bei Nachhilfe. <br/><br/>
+                        Leider muss ich, bevor
+                        ich in das Reich der Feen zurück gehe, noch ein paar Dinge erledigen und konnte nicht warten.<br/><br/>
+                        Vielleicht holst du
+                        mich ja noch ein. Ich hinterlasse dir verschlüsselte Nachrichten, sodass du immer weißt wo ich bin. <br/><br/>Ich
+                        hoffe
+                        wir sehen uns noch, damit ich dir ein Geschenk übergeben kann.<br/><br/></p>
+                    <p style={{fontSize: '20px'}}>Deine Fee</p>
+                </IonCardContent>
+            </IonCard>
+            <div style={{display: 'flex', justifyContent: 'center', marginTop: '32px'}}>
+                <IonButton onClick={goToNextStep}>zur nächsten Nachricht</IonButton>
             </div>
         </>
     );
