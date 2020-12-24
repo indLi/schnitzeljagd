@@ -1,11 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import {IonButton, IonContent, IonInput, IonModal, IonPage} from '@ionic/react';
 import './Home.css';
-import {Welcome} from "./steps/Welcome";
-import {ViewFlintsbach} from "./steps/ViewFlintsbach";
-import {Loading} from "./steps/Loading";
+import {Welcome} from "./evi/Welcome";
+import {ViewFlintsbach} from "./evi/ViewFlintsbach";
+import {Loading} from "./evi/Loading";
 import {Plugins} from '@capacitor/core';
-import {Castle} from "./steps/Castle";
+import {Castle} from "./evi/Castle";
 import {InitialPassword} from "./tarek/00_InitialPassword";
 import {CoordinatesLake} from "./tarek/01_CoordinatesLake";
 import {Hochstand} from "./tarek/02_Hochstand";

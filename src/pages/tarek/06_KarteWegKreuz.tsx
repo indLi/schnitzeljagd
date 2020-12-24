@@ -1,7 +1,7 @@
 import React from "react";
 import {CheckPosition} from "../../components/CheckPosition";
 import {IonCard} from "@ionic/react";
-import {StepProps} from "../steps/commonSteps";
+import {StepProps} from "../evi/commonSteps";
 
 
 export const KarteWegKreuz: React.FC<StepProps> = ({goToNextStep}) => {

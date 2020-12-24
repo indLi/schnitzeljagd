@@ -1,5 +1,5 @@
 import React from "react";
-import {StepProps} from "../steps/commonSteps";
+import {StepProps} from "../evi/commonSteps";
 import {IonCard, IonCardContent} from "@ionic/react";
 import {CheckInput} from "../../components/CheckInput";
 
