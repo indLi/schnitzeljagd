@@ -15,7 +15,7 @@ export const Welcome: React.FC<StepProps> = ({goToNextStep}) => {
                         Vielleicht holst du
                         mich ja noch ein. Ich hinterlasse dir verschlüsselte Nachrichten, sodass du immer weißt wo ich bin. <br/><br/>Ich
                         hoffe
-                        wir sehen uns noch, damit ich dir ein Geschenk übergeben kann.<br/><br/></p>
+                        wir sehen uns noch, damit ich dir dein Geschenk übergeben kann.<br/><br/></p>
                     <p style={{fontSize: '20px'}}>Deine Fee</p>
                 </IonCardContent>
             </IonCard>

@@ -3,7 +3,6 @@ import {StepProps} from "./commonSteps";
 import {CheckPosition} from "../../components/CheckPosition";
 import {IonCard, IonCardContent} from "@ionic/react";
 import {DescriptionText} from "../../components/DescriptionText";
-import {CurrentCoordinates} from "../../components/CurrentCoordinates";
 
 
 export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
@@ -11,7 +10,7 @@ export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
         <div>
             <DescriptionText><p>Soeben ist eine Postkarte für dich angekommen: </p><br/></DescriptionText>
             <IonCard>
-                <img src='schnitzeljagd/assets/images/flintsbach.jpg'/>
+                <img src='schnitzeljagd/assets/images/flintsbach.jpeg'/>
                 <IonCardContent>
                     Ich bin gerade zu Besuch bei einem alten Freund. Er regiert sein Königreich schon sehr lange. Von seinem Thron
                     überblickt man das ganze Land. <br/>
@@ -21,9 +20,7 @@ export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
                     Sieh es dir am besten selbst an und komm auch her.
                 </IonCardContent>
             </IonCard>
-            {/*TODO: insert correct position*/}
-            <CheckPosition latitude={47.716295} longitude={12.130200} arrived={() => goToNextStep()}/>
-            <CurrentCoordinates latitude={47.716295} longitude={12.130200} arrived={goToNextStep}/>
+            <CheckPosition latitude={47.716110} longitude={12.130480} arrived={() => goToNextStep()}/>
         </div>
     );
 };
