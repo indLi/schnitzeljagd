@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {IonButton, IonInput, IonToast} from "@ionic/react";
 
 
-type CheckInputProps = { correctValues: string[], placeholder: string, buttonText?: string, successMessage?: string, errorMessage?: string, onSuccess: (value: string) => void };
+type CheckInputProps = { correctValues: string[], placeholder?: string, buttonText?: string, successMessage?: string, errorMessage?: string, onSuccess: (value: string) => void };
 
 export const CheckInput: React.FC<CheckInputProps> = ({
                                                           correctValues,

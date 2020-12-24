@@ -5,7 +5,7 @@ import {Welcome} from "./evi/Welcome";
 import {ViewFlintsbach} from "./evi/ViewFlintsbach";
 import {Loading} from "./evi/Loading";
 import {Plugins} from '@capacitor/core';
-import {Castle} from "./evi/Castle";
+import {Marienkaefer} from "./evi/Marienkaefer";
 import {InitialPassword} from "./tarek/00_InitialPassword";
 import {CoordinatesLake} from "./tarek/01_CoordinatesLake";
 import {Hochstand} from "./tarek/02_Hochstand";
@@ -32,7 +32,7 @@ enum StepEvi {
     InitialPassword,
     Welcome,
     ViewFlintsbach,
-    Castle
+    Marienkaefer
 }
 
 enum StepTarek {
@@ -141,8 +141,8 @@ const Home: React.FC = () => {
                 return <Welcome goToNextStep={goToNextStep}/>
             case StepEvi.ViewFlintsbach:
                 return <ViewFlintsbach goToNextStep={goToNextStep}/>
-            case StepEvi.Castle:
-                return <Castle goToNextStep={goToNextStep}/>
+            case StepEvi.Marienkaefer:
+                return <Marienkaefer goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
