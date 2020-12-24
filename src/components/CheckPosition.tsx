@@ -54,7 +54,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
         setLoading(true);
 
         try {
-            const position = await Geolocation.getCurrentPosition();
+            const position = await Geolocation.getCurrentPosition({enableHighAccuracy:true});
             setLoading(false);
             setPositionError({showError: false});
             const checkedPosition = checkPosition(position);

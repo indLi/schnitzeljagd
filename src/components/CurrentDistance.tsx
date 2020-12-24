@@ -36,7 +36,7 @@ export const CurrentDistance: React.FC<CurrentDistanceProps> = ({latitude, longi
 
         const getLocation = async () => {
             try {
-                const position = await Geolocation.getCurrentPosition();
+                const position = await Geolocation.getCurrentPosition({enableHighAccuracy:true});
                 setPositionError({showError: false});
                 const checkedPosition = checkPosition(position);
                 setDistance(checkedPosition.distance);
