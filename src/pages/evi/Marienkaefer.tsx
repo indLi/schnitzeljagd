@@ -13,9 +13,8 @@ export const Marienkaefer: React.FC<StepProps> = ({goToNextStep}) => {
             </DescriptionText>
             <IonCard>
                 <IonCardContent>
-                    Am Burggraben lebt ein Marienkäfer. Er kann dir sagen wo ich hingegangen bin.<br/><br/>
-                    Tipp: Oft versteckt er sich.... TODO
-
+                    In der Burg lebt ein Marienkäfer. Er kann dir sagen wo ich hingegangen bin.<br/><br/>
+                    Tipp: Oft versteckt er sich bei den Fenstern der Burgmauer. Brombeeren mag er besonders.
                     <br/><br/>
                     Wie viele Punkte hat der Marienkäfer?
                 </IonCardContent>

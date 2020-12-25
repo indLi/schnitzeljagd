@@ -24,8 +24,8 @@ import {AlfonsNachbar} from "./tarek/14_AlfonsNachbar";
 import {Keller} from "./tarek/15_Keller";
 import {Bier} from "./tarek/16_Bier";
 import {CheckInput} from "../components/CheckInput";
-import {ZumBaerlauch} from "./evi/ZumBaerlauch";
-import {Baerlauch} from "./evi/Baerlauch";
+import {KarteMarienkaefer} from "./evi/KarteMarienkaefer";
+import {Kreuzung} from "./evi/Kreuzung";
 
 const {Storage} = Plugins;
 
@@ -35,8 +35,8 @@ enum StepEvi {
     Welcome,
     ViewFlintsbach,
     Marienkaefer,
-    ZumBaerlauch,
-    Baerlauch,
+    KarteMarienkaefer,
+    Kreuzung,
 }
 
 enum StepTarek {
@@ -147,10 +147,10 @@ const Home: React.FC = () => {
                 return <ViewFlintsbach goToNextStep={goToNextStep}/>
             case StepEvi.Marienkaefer:
                 return <Marienkaefer goToNextStep={goToNextStep}/>
-            case StepEvi.ZumBaerlauch:
-                return <ZumBaerlauch goToNextStep={goToNextStep}/>
-            case StepEvi.Baerlauch:
-                return <Baerlauch goToNextStep={goToNextStep}/>
+            case StepEvi.KarteMarienkaefer:
+                return <KarteMarienkaefer goToNextStep={goToNextStep}/>
+            case StepEvi.Kreuzung:
+                return <Kreuzung goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
