@@ -10,7 +10,7 @@ export const Kreuzung: React.FC<StepProps> = ({goToNextStep}) => {
         <div>
             <IonCard>
                 <IonCardContent>
-                    Was ist die Summe?<br/><br/>
+                    Sieh dich genau um. Was ist die Summe?<br/><br/>
                     <IonIcon style={{fontSize: '25px', color: 'red'}} icon={ellipseOutline}/> +
                     <IonIcon style={{fontSize: '25px', color: '#000000'}} icon={ellipse}/> +
                     <IonIcon style={{fontSize: '25px', color: '#e8e8e8'}} icon={flag}/>
