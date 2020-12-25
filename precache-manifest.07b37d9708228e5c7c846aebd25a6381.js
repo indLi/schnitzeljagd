@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "a55504523535e2d9ad9829ed047b4833",
+    "revision": "9d3a23d7a5305622692bda4ac9005b03",
     "url": "/schnitzeljagd/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/schnitzeljagd/static/css/4.3614eac3.chunk.css"
   },
   {
-    "revision": "184dd19f46a78e1cb743",
+    "revision": "280145a3a5bed6e48b49",
     "url": "/schnitzeljagd/static/css/main.19bee14f.chunk.css"
   },
   {
@@ -248,8 +248,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/schnitzeljagd/static/js/9.18f55f71.chunk.js"
   },
   {
-    "revision": "184dd19f46a78e1cb743",
-    "url": "/schnitzeljagd/static/js/main.280b49be.chunk.js"
+    "revision": "280145a3a5bed6e48b49",
+    "url": "/schnitzeljagd/static/js/main.3b89cd19.chunk.js"
   },
   {
     "revision": "20f5e0cf49be5ccb71b4",
