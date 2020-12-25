@@ -26,6 +26,12 @@ import {Bier} from "./tarek/16_Bier";
 import {CheckInput} from "../components/CheckInput";
 import {KarteMarienkaefer} from "./evi/KarteMarienkaefer";
 import {Kreuzung} from "./evi/Kreuzung";
+import {ZurBuehne} from "./evi/ZurBuehne";
+import {Post} from "./evi/Post";
+import {KoordinatenBank} from "./evi/KoordinatenBank";
+import {See} from "./evi/See";
+import {SeeStein} from "./evi/SeeStein";
+import {Ende} from "./evi/Ende";
 
 const {Storage} = Plugins;
 
@@ -37,6 +43,12 @@ enum StepEvi {
     Marienkaefer,
     KarteMarienkaefer,
     Kreuzung,
+    ZurBuehne,
+    Post,
+    KoordinatenBank,
+    See,
+    SeeStein,
+    Ende,
 }
 
 enum StepTarek {
@@ -151,6 +163,18 @@ const Home: React.FC = () => {
                 return <KarteMarienkaefer goToNextStep={goToNextStep}/>
             case StepEvi.Kreuzung:
                 return <Kreuzung goToNextStep={goToNextStep}/>
+            case StepEvi.ZurBuehne:
+                return <ZurBuehne goToNextStep={goToNextStep}/>
+            case StepEvi.Post:
+                return <Post goToNextStep={goToNextStep}/>
+            case StepEvi.KoordinatenBank:
+                return <KoordinatenBank goToNextStep={goToNextStep}/>
+            case StepEvi.See:
+                return <See goToNextStep={goToNextStep}/>
+            case StepEvi.SeeStein:
+                return <SeeStein goToNextStep={goToNextStep}/>
+            case StepEvi.Ende:
+                return <Ende goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
