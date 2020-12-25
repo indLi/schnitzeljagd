@@ -32,6 +32,7 @@ import {KoordinatenBank} from "./evi/KoordinatenBank";
 import {See} from "./evi/See";
 import {SeeStein} from "./evi/SeeStein";
 import {Ende} from "./evi/Ende";
+import {EndeEnde} from "./evi/EndeEnde";
 
 const {Storage} = Plugins;
 
@@ -49,6 +50,7 @@ enum StepEvi {
     See,
     SeeStein,
     Ende,
+    EndeEnde,
 }
 
 enum StepTarek {
@@ -175,6 +177,8 @@ const Home: React.FC = () => {
                 return <SeeStein goToNextStep={goToNextStep}/>
             case StepEvi.Ende:
                 return <Ende goToNextStep={goToNextStep}/>
+            case StepEvi.EndeEnde:
+                return <EndeEnde goToNextStep={goToNextStep}/>
             default:
                 return <Loading/>
         }
