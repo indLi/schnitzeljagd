@@ -10,7 +10,7 @@ export const Verboten: React.FC<StepProps> = ({goToNextStep}) => {
             <IonCardContent>
                 Was ist hier verboten?
             </IonCardContent>
-            <CheckInput correctValues={['schutt und müll ablagen', 'schutt u. müll ablagen']} placeholder={'was ist es nur?'} onSuccess={goToNextStep} buttonText={'Meint ihr das?'} errorMessage={'Nein, das ist es nicht...'}/>
+            <CheckInput correctValues={['schutt und müll abladen', 'schutt u. müll abladen']} placeholder={'was ist es nur?'} onSuccess={goToNextStep} buttonText={'Meint ihr das?'} errorMessage={'Nein, das ist es nicht...'}/>
         </IonCard>
     );
 };
