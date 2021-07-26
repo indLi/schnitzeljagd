@@ -20,7 +20,7 @@ export const ViewFlintsbach: React.FC<StepProps> = ({goToNextStep}) => {
                     Sieh es dir am besten selbst an und komm auch her.
                 </IonCardContent>
             </IonCard>
-            <CheckPosition latitude={47.716110} longitude={12.130480} arrived={() => goToNextStep()}/>
+            <CheckPosition latitude={47.716110} longitude={12.130480} arrived={() => goToNextStep()} accuracy={100}/>
         </div>
     );
 };

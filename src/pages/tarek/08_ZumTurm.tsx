@@ -13,7 +13,7 @@ export const ZumTurm: React.FC<StepProps> = ({goToNextStep}) => {
                     1,0 km
                 </div>
             </IonCardContent>
-            <CheckPosition accuracy={70} latitude={48.25509} longitude={7.79374} arrived={() => goToNextStep()}/>
+            <CheckPosition accuracy={70} latitude={48.243050} longitude={7.801360} arrived={() => goToNextStep()}/>
         </IonCard>
     );
 };
