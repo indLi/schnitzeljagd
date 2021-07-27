@@ -33,6 +33,11 @@ import {See} from "./evi/See";
 import {SeeStein} from "./evi/SeeStein";
 import {Ende} from "./evi/Ende";
 import {EndeEnde} from "./evi/EndeEnde";
+import {HalloSteffi} from "./steffi/HalloSteffi";
+import {Geduld} from "./steffi/Geduld";
+import {GeduldGeschafft} from "./steffi/GeduldGeschafft";
+import {GuteFreunde} from "./steffi/GuteFreunde";
+import {GuteFreundeGeschafft} from "./steffi/GuteFreundeGeschafft";
 
 const {Storage} = Plugins;
 
@@ -73,14 +78,23 @@ enum StepTarek {
     Bier,
 }
 
+enum StepSteffi {
+    InitialPassword,
+    WelcomeSteffi,
+    Geduld,
+    GeduldGeschafft,
+    GuteFreunde,
+    GuteFreundeGeschafft,
+}
+
 const currentStepStorageKey = 'currentStep';
 const personStorageKey = 'person';
 
-export type Person = 'evi' | 'tarek';
+export type Person = 'evi' | 'tarek' | 'steffi';
 
 const Home: React.FC = () => {
     const [person, setPerson] = useState<Person>();
-    const [step, setStep] = useState<StepEvi | StepTarek | undefined>();
+    const [step, setStep] = useState<StepEvi | StepTarek | StepSteffi | undefined>();
     const [backgroundColor, setBackgroundColor] = useState<string>('#fbfbfb');
 
     const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
@@ -118,6 +132,15 @@ const Home: React.FC = () => {
 
             document.body.style.setProperty('--ion-color-secondary', '#72eab7');
             document.body.style.setProperty('--ion-color-secondary-shade', '#64cea1');
+            document.body.style.setProperty('--ion-color-secondary-contrast', '#000000');
+        } else if (person === 'steffi') {
+            setBackgroundColor('#fdcdb1')
+            document.body.style.setProperty('--ion-color-primary', '#9c27b0');
+            document.body.style.setProperty('--ion-color-primary-shade', '#89229b');
+            document.body.style.setProperty('--ion-color-primary-contrast', '#ffffff');
+
+            document.body.style.setProperty('--ion-color-secondary', '#7e1895');
+            document.body.style.setProperty('--ion-color-secondary-shade', '#ffffff');
             document.body.style.setProperty('--ion-color-secondary-contrast', '#000000');
         }
     }, [person])
@@ -225,12 +248,32 @@ const Home: React.FC = () => {
         }
     }
 
+    const getCurrentStepSteffi = () => {
+        switch (step) {
+            case StepSteffi.InitialPassword:
+                return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
+            case  StepSteffi.WelcomeSteffi:
+                return <HalloSteffi goToNextStep={goToNextStep}/>
+            case  StepSteffi.Geduld:
+                return <Geduld goToNextStep={goToNextStep}/>
+            case  StepSteffi.GeduldGeschafft:
+                return <GeduldGeschafft goToNextStep={goToNextStep}/>
+            case  StepSteffi.GuteFreunde:
+                return <GuteFreunde goToNextStep={goToNextStep}/>
+            case  StepSteffi.GuteFreundeGeschafft:
+                return <GuteFreundeGeschafft goToNextStep={goToNextStep}/>
+            default:
+                return <Loading/>
+        }
+    }
+
     const getCurrentStep = () => {
         if (person === 'tarek') {
             return getCurrentStepTarek()
         } else if (person === 'evi') {
             return getCurrentStepEvi()
-        }
+        } else if (person === 'steffi')
+            return getCurrentStepSteffi()
         return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
     }
 
