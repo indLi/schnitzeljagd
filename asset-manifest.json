@@ -3,8 +3,8 @@
     "static/js/0.cb9e6b10.chunk.js": "/schnitzeljagd/static/js/0.cb9e6b10.chunk.js",
     "static/js/0.cb9e6b10.chunk.js.map": "/schnitzeljagd/static/js/0.cb9e6b10.chunk.js.map",
     "main.css": "/schnitzeljagd/static/css/main.19bee14f.chunk.css",
-    "main.js": "/schnitzeljagd/static/js/main.1e059a34.chunk.js",
-    "main.js.map": "/schnitzeljagd/static/js/main.1e059a34.chunk.js.map",
+    "main.js": "/schnitzeljagd/static/js/main.d2bd42a1.chunk.js",
+    "main.js.map": "/schnitzeljagd/static/js/main.d2bd42a1.chunk.js.map",
     "polyfills-dom.js": "/schnitzeljagd/static/js/polyfills-dom.64e6baa3.chunk.js",
     "polyfills-dom.js.map": "/schnitzeljagd/static/js/polyfills-dom.64e6baa3.chunk.js.map",
     "runtime-main.js": "/schnitzeljagd/static/js/runtime-main.04e31503.js",
@@ -121,7 +121,7 @@
     "static/js/58.69fe07fd.chunk.js": "/schnitzeljagd/static/js/58.69fe07fd.chunk.js",
     "static/js/58.69fe07fd.chunk.js.map": "/schnitzeljagd/static/js/58.69fe07fd.chunk.js.map",
     "index.html": "/schnitzeljagd/index.html",
-    "precache-manifest.0336d1e4b8018b8bb17df847b62a28a3.js": "/schnitzeljagd/precache-manifest.0336d1e4b8018b8bb17df847b62a28a3.js",
+    "precache-manifest.605eb6c8e92109f79b0c384b7c211dde.js": "/schnitzeljagd/precache-manifest.605eb6c8e92109f79b0c384b7c211dde.js",
     "service-worker.js": "/schnitzeljagd/service-worker.js",
     "static/css/4.3614eac3.chunk.css.map": "/schnitzeljagd/static/css/4.3614eac3.chunk.css.map",
     "static/css/main.19bee14f.chunk.css.map": "/schnitzeljagd/static/css/main.19bee14f.chunk.css.map",
@@ -135,6 +135,6 @@
     "static/css/4.3614eac3.chunk.css",
     "static/js/4.65e73aff.chunk.js",
     "static/css/main.19bee14f.chunk.css",
-    "static/js/main.1e059a34.chunk.js"
+    "static/js/main.d2bd42a1.chunk.js"
   ]
 }
