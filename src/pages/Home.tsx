@@ -38,6 +38,7 @@ import {Geduld} from "./steffi/Geduld";
 import {GeduldGeschafft} from "./steffi/GeduldGeschafft";
 import {GuteFreunde} from "./steffi/GuteFreunde";
 import {GuteFreundeGeschafft} from "./steffi/GuteFreundeGeschafft";
+import {getCurrentStepSteffi, StepSteffi} from "./steffi/getCurrentStepSteffi";
 
 const {Storage} = Plugins;
 
@@ -78,14 +79,6 @@ enum StepTarek {
     Bier,
 }
 
-enum StepSteffi {
-    InitialPassword,
-    WelcomeSteffi,
-    Geduld,
-    GeduldGeschafft,
-    GuteFreunde,
-    GuteFreundeGeschafft,
-}
 
 const currentStepStorageKey = 'currentStep';
 const personStorageKey = 'person';
@@ -248,24 +241,6 @@ const Home: React.FC = () => {
         }
     }
 
-    const getCurrentStepSteffi = () => {
-        switch (step) {
-            case StepSteffi.InitialPassword:
-                return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
-            case  StepSteffi.WelcomeSteffi:
-                return <HalloSteffi goToNextStep={goToNextStep}/>
-            case  StepSteffi.Geduld:
-                return <Geduld goToNextStep={goToNextStep}/>
-            case  StepSteffi.GeduldGeschafft:
-                return <GeduldGeschafft goToNextStep={goToNextStep}/>
-            case  StepSteffi.GuteFreunde:
-                return <GuteFreunde goToNextStep={goToNextStep}/>
-            case  StepSteffi.GuteFreundeGeschafft:
-                return <GuteFreundeGeschafft goToNextStep={goToNextStep}/>
-            default:
-                return <Loading/>
-        }
-    }
 
     const getCurrentStep = () => {
         if (person === 'tarek') {
@@ -273,7 +248,7 @@ const Home: React.FC = () => {
         } else if (person === 'evi') {
             return getCurrentStepEvi()
         } else if (person === 'steffi')
-            return getCurrentStepSteffi()
+            return getCurrentStepSteffi({goToNextStep, selectPerson, step})
         return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
     }
 
