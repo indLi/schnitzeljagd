@@ -22,7 +22,7 @@ export const CheckInput: React.FC<CheckInputProps> = ({
     };
 
     const onCheckInput = () => {
-        if (correctValues.includes((inputValue || '').toLocaleLowerCase())) {
+        if (correctValues.map(value => value.toLocaleLowerCase()).includes((inputValue || '').toLocaleLowerCase())) {
             setShowSuccess(true)
         } else {
             setShowError(true)
@@ -42,7 +42,7 @@ export const CheckInput: React.FC<CheckInputProps> = ({
                     }
                 }}
                 message={successMessage || 'Juhuuu, richtig!'}
-                duration={1000}
+                duration={500}
             />
             <IonToast
                 color={'danger'}

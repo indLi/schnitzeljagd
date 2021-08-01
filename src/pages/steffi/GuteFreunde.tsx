@@ -16,7 +16,7 @@ export const GuteFreunde: React.FC<StepProps> = ({goToNextStep}) => {
                         <p style={{fontSize: '18px', fontWeight: 'bold'}}>.</p>
                     </IonCardContent>
                 </IonCard>
-                <CheckInput correctValues={['schokoladensorbet']} placeholder={'Lösungswort'}
+                <CheckInput correctValues={['apfelkuchen']} placeholder={'Lösungswort'}
                             onSuccess={() => goToNextStep()} successMessage={'lecker lecker'}
                             errorMessage={'Konnte noch niemal helfen?'} buttonText={'Stimmt\'s?'}/>
         </>

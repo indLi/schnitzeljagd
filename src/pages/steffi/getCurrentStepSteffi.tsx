@@ -11,6 +11,7 @@ import {BrunnenGeschafft} from "./BrunnenGeschafft";
 import {Baum} from "./Baum";
 import {BaumGeschafft} from "./BaumGeschafft";
 import {Olympia} from "./Olympia";
+import {OlympiaGeschafft} from "./OlympiaGeschafft";
 
 export enum StepSteffi {
     InitialPassword,
@@ -23,7 +24,8 @@ export enum StepSteffi {
     GuteFreundeGeschafft,
     Baum,
     BaumGeschafft,
-    Olympia
+    Olympia,
+    OlympiaGeschafft,
 }
 
 export const getCurrentStepSteffi = ({
@@ -54,6 +56,8 @@ export const getCurrentStepSteffi = ({
             return <BaumGeschafft goToNextStep={goToNextStep}/>
         case  StepSteffi.Olympia:
             return <Olympia goToNextStep={goToNextStep}/>
+        case  StepSteffi.OlympiaGeschafft:
+            return <OlympiaGeschafft goToNextStep={goToNextStep}/>
         default:
             return <Loading/>
     }

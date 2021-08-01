@@ -10,11 +10,11 @@ export const Olympia: React.FC<StepProps> = ({goToNextStep}) => {
             <IonCard style={{backgroundColor: '#fff5d7'}}>
                 <IonCardContent>
                     nikimm dekeikineken likiekebsteken mikit ukund bekestekeikigeke deken bekerg akan dekem dikieke bekesteken deker wekeld
-                    wekettkäkämpfeke akaukusgeketrakageken hakabeken.
+                    wekettkäkämpfeke akaukusgeketrakageken hakabeken. Ekes ikist schokon lakangeke heker, dakass sikieke hikieker gekekäkämpft hakabeken. Zukuleketzt wakareken sikieke ikim fekerneken Jakapakan.
                     <br/><br/>
                     <p style={{fontStyle: 'italic'}}>
                         bikitteke bekeakachteke akaukuf grukund tekechnikischeker gekegekebekenhekeikiteken kakann ekes sekeikin, dakass
-                        dekeikin Hakandyky dekeikineken stakandokort nikicht rikichtikig akaktukuakalikisikiekert. zukur sikichekerhekeikit
+                        dekeikin hakandyky dekeikineken stakandokort nikicht rikichtikig akaktukuakalikisikiekert. zukur sikichekerhekeikit
                         kakannst duku gokookogleke makaps ököffneken, wakarteken bikis dekeikin stakandokort rikichtikig ikist ukund
                         hikieker wekeikiteker makacheken.
                     </p>
@@ -27,18 +27,17 @@ export const Olympia: React.FC<StepProps> = ({goToNextStep}) => {
 };
 
 const getDistanceErrorMessage = (distance: number, accuracy: number) => {
-    console.log(distance)
     if (distance < accuracy + 25) {
-        return 'ganz warm'
+        return 'heiß'
     } else if (distance < accuracy + 100) {
         return 'warm'
     } else if (distance < accuracy + 300) {
         return 'lauwarm'
     } else if (distance < accuracy + 500) {
         return 'geschmolzen ist es schon'
-    } else if (distance < accuracy + 1000) {
+    } else if (distance < accuracy + 800) {
         return 'es taut'
-    } else if (distance < accuracy + 2000) {
+    } else if (distance < accuracy + 1000) {
         return 'kalt'
     } else {
         return 'Eisig kalt'

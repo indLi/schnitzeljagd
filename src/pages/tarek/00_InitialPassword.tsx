@@ -9,7 +9,7 @@ type InitialPasswordProps = StepProps & { setPerson: (person: Person) => {} }
 export const InitialPassword: React.FC<InitialPasswordProps> = ({goToNextStep, setPerson}) => {
     const passwordTarek = 'blacky13';
     const passwordEvi = 'fee';
-    const passwordSteffi = 'test';
+    const passwordSteffi = 'Zitronenkuchen';
 
     const onSuccess = (value: string) => {
         if (value === passwordTarek) {

@@ -22,9 +22,9 @@ export const Baum: React.FC<StepProps> = ({goToNextStep}) => {
                     Finde daraufhin die Abfolge dieser Farben.
                 </IonCardContent>
             </IonCard>
-            <CheckInput correctValues={['schokoladensorbet']} placeholder={'Lösungswort'}
-                        onSuccess={() => goToNextStep()} successMessage={'lecker lecker'}
-                        errorMessage={'Konnte noch niemal helfen?'} buttonText={'Stimmt\'s?'}/>
+            <CheckInput correctValues={['baumkuchen']} placeholder={'Lösungswort'}
+                        onSuccess={() => goToNextStep()} successMessage={'lecker schmeckt der Baum'}
+                        errorMessage={'leider falsch!'} buttonText={'Stimmt\'s?'}/>
         </>
     );
 };
