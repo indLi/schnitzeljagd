@@ -2,21 +2,45 @@ import React from "react";
 import {IonCard, IonCardContent} from "@ionic/react";
 import {StepProps} from "./commonSteps";
 import {CheckInput} from "../../components/CheckInput";
+import {CheckPosition} from "../../components/CheckPosition";
 
 export const Olympia: React.FC<StepProps> = ({goToNextStep}) => {
     return (
         <>
-                <IonCard style={{ backgroundColor: '#fff5d7'}}>
-                    <IonCardContent>
-                        An den Wurzeln der Geduld findest du den Schlüssel
-                    </IonCardContent>
-                    <IonCardContent >
-                        <p style={{fontSize: '18px', fontWeight: 'bold'}}>AKDJFKAJSKASDKFJKASJDKFJAKSJDFKA</p>
-                    </IonCardContent>
-                </IonCard>
-                <CheckInput correctValues={['zitronenkuchen']} placeholder={'hier tippen'}
-                            onSuccess={() => goToNextStep()} successMessage={'Jaaaa! Die Gedult hat sich gelohnt!'}
-                            errorMessage={'Das ist nicht die Lösung. Zuerst musst du den Schlüssel finden!'} buttonText={'Stimmt\'s?'}/>
+            <IonCard style={{backgroundColor: '#fff5d7'}}>
+                <IonCardContent>
+                    nikimm dekeikineken likiekebsteken mikit ukund bekestekeikigeke deken bekerg akan dekem dikieke bekesteken deker wekeld
+                    wekettkäkämpfeke akaukusgeketrakageken hakabeken.
+                    <br/><br/>
+                    <p style={{fontStyle: 'italic'}}>
+                        bikitteke bekeakachteke akaukuf grukund tekechnikischeker gekegekebekenhekeikiteken kakann ekes sekeikin, dakass
+                        dekeikin Hakandyky dekeikineken stakandokort nikicht rikichtikig akaktukuakalikisikiekert. zukur sikichekerhekeikit
+                        kakannst duku gokookogleke makaps ököffneken, wakarteken bikis dekeikin stakandokort rikichtikig ikist ukund
+                        hikieker wekeikiteker makacheken.
+                    </p>
+                </IonCardContent>
+            </IonCard>
+            <CheckPosition latitude={48.1698990} longitude={11.5515956} accuracy={100} arrived={() => goToNextStep()} buttonText={'daka?'}
+                           getErrorMessage={getDistanceErrorMessage}/>
         </>
     );
 };
+
+const getDistanceErrorMessage = (distance: number, accuracy: number) => {
+    console.log(distance)
+    if (distance < accuracy + 25) {
+        return 'ganz warm'
+    } else if (distance < accuracy + 100) {
+        return 'warm'
+    } else if (distance < accuracy + 300) {
+        return 'lauwarm'
+    } else if (distance < accuracy + 500) {
+        return 'geschmolzen ist es schon'
+    } else if (distance < accuracy + 1000) {
+        return 'es taut'
+    } else if (distance < accuracy + 2000) {
+        return 'kalt'
+    } else {
+        return 'Eisig kalt'
+    }
+}

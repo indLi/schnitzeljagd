@@ -8,7 +8,9 @@ export const GuteFreunde: React.FC<StepProps> = ({goToNextStep}) => {
         <>
                 <IonCard style={{ backgroundColor: '#fff5d7'}}>
                     <IonCardContent>
-                        Manchmal ist man an einem Punkt, an dem nur ein guter Freund weiter helfen kann
+                        Du bist schon sehr weit gekommen, das ist sicher.
+                        <br/>
+                        Aber manchmal ist man an einem Punkt, an dem nur ein guter Freund weiter helfen kann.
                     </IonCardContent>
                     <IonCardContent >
                         <p style={{fontSize: '18px', fontWeight: 'bold'}}>.</p>

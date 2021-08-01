@@ -15,6 +15,7 @@ interface CheckPositionProps {
     arrived: () => void;
     successMessage?: string;
     buttonText?: string;
+    getErrorMessage?: (distance: number, accuracy: number) => string;
 }
 
 const getDistanceErrorMessage = (distance: number, accuracy: number) => {
@@ -28,7 +29,7 @@ const getDistanceErrorMessage = (distance: number, accuracy: number) => {
         return 'Ganz ok, aber kalt ist es mir trotzdem noch.'
     } else if (distance < accuracy + 1000) {
         return 'Brrr, ganz schön kalt.'
-    }  else if (distance < accuracy + 2000) {
+    } else if (distance < accuracy + 2000) {
         return 'Von wegen Klimaerwärmung.'
     } else if (distance < accuracy + 3000) {
         return 'Achtung, Glatteis.'
@@ -37,7 +38,15 @@ const getDistanceErrorMessage = (distance: number, accuracy: number) => {
     }
 }
 
-export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude, arrived, successMessage, accuracy, buttonText}) => {
+export const CheckPosition: React.FC<CheckPositionProps> = ({
+                                                                latitude,
+                                                                longitude,
+                                                                arrived,
+                                                                successMessage,
+                                                                accuracy,
+                                                                buttonText,
+                                                                getErrorMessage
+                                                            }) => {
     const [loading, setLoading] = useState<boolean>(false);
     const [positionError, setPositionError] = useState<LocationError>({showError: false});
     const [showSuccess, setShowSuccess] = useState<boolean>(false);
@@ -54,7 +63,7 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
         setLoading(true);
 
         try {
-            const position = await Geolocation.getCurrentPosition({enableHighAccuracy:true});
+            const position = await Geolocation.getCurrentPosition({enableHighAccuracy: true});
             setLoading(false);
             setPositionError({showError: false});
             const checkedPosition = checkPosition(position);
@@ -62,7 +71,12 @@ export const CheckPosition: React.FC<CheckPositionProps> = ({latitude, longitude
                 setDistanceError(undefined)
                 setShowSuccess(true)
             } else {
-                setDistanceError(getDistanceErrorMessage(checkedPosition.distance, accuracy || 50));
+                if (!!getErrorMessage) {
+                    setDistanceError(getErrorMessage(checkedPosition.distance, accuracy || 50));
+                } else {
+                    setDistanceError(getDistanceErrorMessage(checkedPosition.distance, accuracy || 50));
+
+                }
             }
         } catch (e) {
             setPositionError({showError: true, message: e.message});
