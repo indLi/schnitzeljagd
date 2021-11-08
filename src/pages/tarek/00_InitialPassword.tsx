@@ -10,20 +10,25 @@ export const InitialPassword: React.FC<InitialPasswordProps> = ({goToNextStep, s
     const passwordTarek = 'blacky13';
     const passwordEvi = 'fee';
     const passwordSteffi = 'zitronenkuchen';
+    const passwordMartin = 'affentanz';
 
     const onSuccess = (value: string) => {
         if (value.toLowerCase() === passwordTarek) {
             setPerson('tarek')
         } else if (value.toLowerCase() === passwordEvi) {
             setPerson('evi')
-        } else if (value.toLowerCase() === passwordSteffi)
+        } else if (value.toLowerCase() === passwordSteffi) {
             setPerson('steffi')
+        } else if (value.toLowerCase() === passwordMartin)
+            setPerson('martin')
         goToNextStep()
     };
 
     return (
         <IonCard style={{paddingBottom: '12px', paddingTop: '24px', marginBottom: '0'}}>
-            <CheckInput correctValues={[passwordTarek, passwordEvi, passwordSteffi]} placeholder={'Passwort'} onSuccess={onSuccess} buttonText={'START'}/>
+            <CheckInput correctValues={[passwordTarek, passwordEvi, passwordSteffi, passwordMartin]} placeholder={'Passwort'}
+                        onSuccess={onSuccess}
+                        buttonText={'START'}/>
         </IonCard>
     );
-}
+};

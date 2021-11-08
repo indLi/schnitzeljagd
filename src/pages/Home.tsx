@@ -39,6 +39,7 @@ import {GeduldGeschafft} from "./steffi/GeduldGeschafft";
 import {GuteFreunde} from "./steffi/GuteFreunde";
 import {GuteFreundeGeschafft} from "./steffi/GuteFreundeGeschafft";
 import {getCurrentStepSteffi, StepSteffi} from "./steffi/getCurrentStepSteffi";
+import {getCurrentStepMartin} from "./martin/getCurrentStepMartin";
 
 const {Storage} = Plugins;
 
@@ -83,7 +84,7 @@ enum StepTarek {
 const currentStepStorageKey = 'currentStep';
 const personStorageKey = 'person';
 
-export type Person = 'evi' | 'tarek' | 'steffi';
+export type Person = 'evi' | 'tarek' | 'steffi' | 'martin';
 
 const Home: React.FC = () => {
     const [person, setPerson] = useState<Person>();
@@ -247,8 +248,12 @@ const Home: React.FC = () => {
             return getCurrentStepTarek()
         } else if (person === 'evi') {
             return getCurrentStepEvi()
-        } else if (person === 'steffi')
+        } else if (person === 'steffi') {
+
             return getCurrentStepSteffi({goToNextStep, selectPerson, step})
+        } else if (person === 'martin') {
+            return getCurrentStepMartin({goToNextStep, selectPerson, step})
+        }
         return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
     }
 
@@ -278,6 +283,8 @@ const Home: React.FC = () => {
                 <div>Person wechseln:
                     <IonButton onClick={() => selectPerson('tarek')}>Tarek</IonButton>
                     <IonButton onClick={() => selectPerson('evi')}>Evi</IonButton>
+                    <IonButton onClick={() => selectPerson('steffi')}>Steffi</IonButton>
+                    <IonButton onClick={() => selectPerson('martin')}>Martin</IonButton>
                 </div>
                 <IonButton onClick={() => setShowCheatModal(false)}>Ich habe nur zufällig das Passwort erraten</IonButton>
             </IonModal>

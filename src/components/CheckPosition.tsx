@@ -28,13 +28,13 @@ const getDistanceErrorMessage = (distance: number, accuracy: number) => {
     } else if (distance < accuracy + 500) {
         return 'Ganz ok, aber kalt ist es mir trotzdem noch.'
     } else if (distance < accuracy + 1000) {
-        return 'Brrr, ganz schön kalt.'
+        return 'Ganz schön kalt.'
     } else if (distance < accuracy + 2000) {
         return 'Von wegen Klimaerwärmung.'
     } else if (distance < accuracy + 3000) {
         return 'Achtung, Glatteis.'
     } else {
-        return 'Auf Spitzbergen war\'s wärmer.'
+        return 'Ganz kalt. Auf Spitzbergen war\'s wärmer.'
     }
 }
 

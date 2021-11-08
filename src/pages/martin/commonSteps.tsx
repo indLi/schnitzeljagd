@@ -2,4 +2,4 @@ export interface StepProps {
     goToNextStep: () => void
 }
 
-export const backgroundCardColorMartin =
+export const backgroundCardColorMartin = '#fffec7';
