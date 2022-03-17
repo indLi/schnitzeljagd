@@ -33,13 +33,9 @@ import {See} from "./evi/See";
 import {SeeStein} from "./evi/SeeStein";
 import {Ende} from "./evi/Ende";
 import {EndeEnde} from "./evi/EndeEnde";
-import {HalloSteffi} from "./steffi/HalloSteffi";
-import {Geduld} from "./steffi/Geduld";
-import {GeduldGeschafft} from "./steffi/GeduldGeschafft";
-import {GuteFreunde} from "./steffi/GuteFreunde";
-import {GuteFreundeGeschafft} from "./steffi/GuteFreundeGeschafft";
 import {getCurrentStepSteffi, StepSteffi} from "./steffi/getCurrentStepSteffi";
 import {getCurrentStepMartin} from "./martin/getCurrentStepMartin";
+import {getCurrentStepJana, StepJana} from "./jana/getCurrentStepJana";
 
 const {Storage} = Plugins;
 
@@ -84,11 +80,11 @@ enum StepTarek {
 const currentStepStorageKey = 'currentStep';
 const personStorageKey = 'person';
 
-export type Person = 'evi' | 'tarek' | 'steffi' | 'martin';
+export type Person = 'evi' | 'tarek' | 'steffi' | 'martin' | 'jana';
 
 const Home: React.FC = () => {
         const [person, setPerson] = useState<Person>();
-        const [step, setStep] = useState<StepEvi | StepTarek | StepSteffi | undefined>();
+        const [step, setStep] = useState<StepEvi | StepTarek | StepSteffi | StepJana | undefined>();
         const [backgroundColor, setBackgroundColor] = useState<string>('#fbfbfb');
 
         const [showPasswordModal, setShowPasswordModal] = useState<boolean>(false);
@@ -142,6 +138,15 @@ const Home: React.FC = () => {
                 document.body.style.setProperty('--ion-color-primary-shade', '#002d88');
                 document.body.style.setProperty('--ion-color-primary-contrast', '#ffffff');
 
+
+                document.body.style.setProperty('--ion-color-secondary', '#215cc4');
+                document.body.style.setProperty('--ion-color-secondary-shade', '#1d51ac');
+                document.body.style.setProperty('--ion-color-secondary-contrast', '#ffffff');
+            } else if (person === 'jana') {
+                setBackgroundColor('#559e52')
+                document.body.style.setProperty('--ion-color-primary', '#6388a9');
+                document.body.style.setProperty('--ion-color-primary-shade', '#038f00');
+                document.body.style.setProperty('--ion-color-primary-contrast', '#ffffff');
 
                 document.body.style.setProperty('--ion-color-secondary', '#215cc4');
                 document.body.style.setProperty('--ion-color-secondary-shade', '#1d51ac');
@@ -258,12 +263,12 @@ const Home: React.FC = () => {
                 return getCurrentStepTarek()
             } else if (person === 'evi') {
                 return getCurrentStepEvi()
-            } else if (person === 'steffi'){
-                return getCurrentStepSteffi({goToNextStep, selectPerson, step})} else if (person === 'martin') {
-            return getCurrentStepMartin({goToNextStep, selectPerson, step})
-        }
-            else if (person === 'martin')
+            } else if (person === 'steffi') {
+                return getCurrentStepSteffi({goToNextStep, selectPerson, step})
+            } else if (person === 'martin') {
                 return getCurrentStepMartin({goToNextStep, selectPerson, step})
+            } else if (person === 'jana')
+                return getCurrentStepJana({goToNextStep, selectPerson, step})
             return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
         }
 
@@ -293,9 +298,9 @@ const Home: React.FC = () => {
                     <div>Person wechseln:
                         <IonButton onClick={() => selectPerson('tarek')}>Tarek</IonButton>
                         <IonButton onClick={() => selectPerson('evi')}>Evi</IonButton>
-                    <IonButton onClick={() => selectPerson('steffi')}>Steffi</IonButton>
-                    <IonButton onClick={() => selectPerson('martin')}>Martin</IonButton>
-                </div>
+                        <IonButton onClick={() => selectPerson('steffi')}>Steffi</IonButton>
+                        <IonButton onClick={() => selectPerson('martin')}>Martin</IonButton>
+                    </div>
                     <IonButton onClick={() => setShowCheatModal(false)}>Ich habe nur zufällig das Passwort erraten</IonButton>
                 </IonModal>
                 <IonContent fullscreen style={{'--background': backgroundColor}}>
