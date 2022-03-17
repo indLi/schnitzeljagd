@@ -268,7 +268,7 @@ const Home: React.FC = () => {
             } else if (person === 'martin') {
                 return getCurrentStepMartin({goToNextStep, selectPerson, step})
             } else if (person === 'jana')
-                return getCurrentStepJana({goToNextStep, selectPerson, step})
+                return getCurrentStepJana({goToNextStep, goToStep, selectPerson, step})
             return <InitialPassword goToNextStep={goToNextStep} setPerson={selectPerson}/>
         }
 
