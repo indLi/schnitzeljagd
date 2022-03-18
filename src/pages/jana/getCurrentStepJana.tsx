@@ -1,7 +1,7 @@
 import {InitialPassword} from "../tarek/00_InitialPassword";
 import {Loading} from "../evi/Loading";
 import React from "react";
-import {IonButton, IonCard, IonCardContent} from "@ionic/react";
+import {IonCard, IonCardContent} from "@ionic/react";
 import {LeftButton} from "../../components/LeftButton";
 import {CurrentDistance} from "../../components/CurrentDistance";
 import {FriedenskircheFakten} from "./FriedenskircheFakten";
@@ -27,7 +27,8 @@ export enum StepJana {
     PeterAnleitung,
     PeterOben,
     PeterUnten,
-    PeterDanach
+    PeterDanach,
+    Ende,
 }
 
 export const backgroundCardColorJana = '#ececec';
@@ -93,22 +94,8 @@ export const getCardContentJana = ({
             </IonCardContent>
         case StepJana.LabyrinthGedicht:
             return <IonCardContent>
-                Fakten habe ich leider keine zu diesem Labyrinth gefunden. Dafür aber ein Gedicht aus der Kategorie 'Gedichte zum
-                Nachdenken' von Picolo: <br/><br/>
-                <div style={{fontStyle: 'italic'}}>
-                    Das Labyrinth<br/><br/>
-
-                    Auf heißen Sohlen laufen Seelen,<br/>
-                    durch des Lebens Labyrinth,<br/>
-                    mit stummen Blicken sie erzählen,<br/>
-                    wie fern sie der Erfüllung sind.<br/><br/>
-
-                    Und sie hasten suchend weiter,<br/>
-                    kalte Hoffnung treibet sie,<br/>
-                    doch ihr Labyrinth wird breiter,<br/>
-                    und den Ausgang sehn sie nie.<br/> <br/>
-                </div>
-                <LeftButton goToNextStep={goToNextStep} buttonText={'Genug nachgedacht'}/>
+                Fakten habe ich leider keine zu diesem Labyrinth gefunden. Dafür wünsche ich aber viel Spaß beim verlaufen :)
+                <LeftButton goToNextStep={goToNextStep} buttonText={'Weiter'}/>
             </IonCardContent>
         case StepJana.LuitpoldparkFakten:
             return <IonCardContent>
@@ -135,15 +122,16 @@ export const getCardContentJana = ({
             </IonCardContent>
         case StepJana.Buecherschrank:
             return <IonCardContent>
-                Super, hier kannst du dir auch gleich ein Buch aussuchen, falls du was zu lesen suchst. <br/><br/>
+                <p style={{fontSize: '20px'}}>Super, angekommen!</p> <br/>
+                Hast du das Haus aus Holz schon entdeckt? Es ist ein Bücherschrank. <br/>
+                Hier kannst du dir gleich ein Buch aussuchen, falls du was zu lesen suchst. <br/><br/>
                 Wusstest du, dass es in München über 30 Bücherschränke gibt? <br/>
                 <LeftButton goToNextStep={goToNextStep} buttonText={'Wahnsinn'}/>
             </IonCardContent>
         case StepJana.BuecherschrankLoesungswort:
             return <IonCardContent>
-                PLATZHALTER LÖSUNGSWORT BÜCHERSCHRANK
-                <LeftButton goToNextStep={goToNextStep} buttonText={'Weiter'}/>
-
+                Du darfst nun Umschlag Nr. 2 öffnen. <br/>
+                <CheckInput correctValues={['schleiereule']} placeholder={'Lösungswort'} onSuccess={() => goToNextStep()}/>
             </IonCardContent>
         case StepJana.Navigation:
             return <IonCardContent>
@@ -164,18 +152,15 @@ export const getCardContentJana = ({
             </IonCardContent>
         case StepJana.Peter:
             return <IonCardContent>
-                Öffne den Umschlag Nummer 2638
+                Öffne den Umschlag Nr. 3!
                 <LeftButton goToNextStep={goToNextStep} buttonText={'Weiter'}/>
             </IonCardContent>
         case StepJana.PeterAnleitung:
             return <IonCardContent>
                 Woooooww, so viel Geld. Was kann man denn damit alles machen? <br/><br/>
-                Zum Beispiel kannst du damit auf den Alten Peter gehen.
-                <LeftButton goToNextStep={() => goToStep(StepJana.PeterOben.toString())} buttonText={'a cool, das mach ich'}/>
-                <LeftButton goToNextStep={() => goToStep(StepJana.PeterUnten.toString())} buttonText={'Gerade keinen Bock auf Treppen steigen'}/>
-
-                <IonButton onClick={() => goToStep(StepJana.PeterOben.toString())}>Ja cool, das mach ich</IonButton>
-                <IonButton onClick={() => goToStep(StepJana.PeterUnten.toString())}>Gerade keinen Bock auf Treppen steigen</IonButton>
+                Zum Beispiel kannst du damit auf den Alten Peter gehen. <br/><br/>
+                <LeftButton goToNextStep={() => goToStep(StepJana.PeterOben.toString())} buttonText={'ja cool, das mach ich'}/>
+                <LeftButton goToNextStep={() => goToStep(StepJana.PeterUnten.toString())} buttonText={'ne, keinen Bock auf Treppen'}/>
             </IonCardContent>
         case StepJana.PeterOben:
             return <IonCardContent>
@@ -199,6 +184,11 @@ export const getCardContentJana = ({
                 Jetzt lass es dir aber erstmal schmecken!
 
                 <LeftButton goToNextStep={goToNextStep} buttonText={'Lecker war\'s'}/>
+            </IonCardContent>
+        case StepJana.Ende:
+            return <IonCardContent>
+                <p style={{fontSize: '35px', textAlign: 'center', margin: '24px 0'}}>Ende!</p>
+                <LeftButton goToNextStep={() => goToStep(StepJana.InitialPassword.toString())} buttonText={'Zurück zum Anfang'}/>
             </IonCardContent>
         default:
             return <Loading/>

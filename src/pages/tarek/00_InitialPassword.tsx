@@ -11,7 +11,7 @@ export const InitialPassword: React.FC<InitialPasswordProps> = ({goToNextStep, s
     const passwordEvi = 'fee';
     const passwordSteffi = 'zitronenkuchen';
     const passwordMartin = 'affentanz';
-    const passwordJana = 'esel';
+    const passwordJana = 'waschbär';
 
     const onSuccess = (value: string) => {
         if (value.toLowerCase() === passwordTarek) {
