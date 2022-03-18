@@ -300,6 +300,7 @@ const Home: React.FC = () => {
                         <IonButton onClick={() => selectPerson('evi')}>Evi</IonButton>
                         <IonButton onClick={() => selectPerson('steffi')}>Steffi</IonButton>
                         <IonButton onClick={() => selectPerson('martin')}>Martin</IonButton>
+                        <IonButton onClick={() => selectPerson('jana')}>Jana</IonButton>
                     </div>
                     <IonButton onClick={() => setShowCheatModal(false)}>Ich habe nur zufällig das Passwort erraten</IonButton>
                 </IonModal>
